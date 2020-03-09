@@ -1,9 +1,9 @@
 {
   "name": "corona-virus-state-board",
   "version": "1.0.0",
-  "script": {
-    "client": "cd client && npm start",
-    "server": "nodemon server.js",
+  "scripsts": {
+    "server": "cd server && supervisor start",
+    "client": "nodemon server.js",
     "dev": "concurrently --kill -ohters-on-fail \"npm client\" \"npm client\""
   }
 }
