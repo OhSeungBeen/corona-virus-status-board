@@ -2,8 +2,11 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var morgan = require('morgan');
 const mongoConnect = require('./schemas');
+const logger = require('./logger');
+const hpp = require('hpp');
+const helmet = require('helmet');
 
 //schedule
 const domesticStatusSchedule = require('./schedule/domesticStatus');
@@ -20,9 +23,16 @@ mongoConnect();
 // domesticStatusByCitySchedule();
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
-app.use(logger('dev'));
+if (process.env.NODE_ENV == 'production') {
+  app.use(morgan('combined'));
+  app.use(helmet());
+  app.use(hpp());
+} else {
+  app.use(morgan('dev'));
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -33,6 +43,8 @@ app.use('/domesticStatusByCity', domesticStatusByCityRouter);
 
 // 400 error
 app.use(function(req, res, next) {
+  logger.info('hello');
+  logger.error('error');
   next(createError(404));
 });
 

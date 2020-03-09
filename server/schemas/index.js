@@ -8,7 +8,9 @@ module.exports = () => {
     mongoose.connect(
       'mongodb://root:nodejsbook@localhost:27017/admin',
       {
-        dbName: 'corona'
+        dbName: 'corona',
+        useNewUrlParser: true,
+        useUnifiedTopology: true
       },
       error => {
         if (error) {
