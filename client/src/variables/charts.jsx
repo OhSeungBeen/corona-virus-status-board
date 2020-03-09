@@ -334,31 +334,41 @@
 // // // used inside src/views/Dashboard.jsx
 // #########################################
 
-var city = [];
-var numbers = [];
+const citys = [];
+const numbers = [];
 
 let chartExample3 = {
   data: canvas => {
+    console.log(citys);
     let ctx = canvas.getContext('2d');
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
     gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
     gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
     gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
-    fetch('/domestic/statusByCity')
+
+    fetch('/domesticStatusByCity')
       .then(res => res.json())
-      .then(statusByCity => {
-        city = [];
-        numbers = [];
-        for (var s of statusByCity) {
-          city.push(s.city);
-          numbers.push(s.numbers);
+      .then(result => {
+        if (citys.length) return;
+        const domesticStatusByCity = result[0];
+        delete domesticStatusByCity._id;
+        delete domesticStatusByCity.date;
+        delete domesticStatusByCity.__v;
+
+        const sortable = [];
+        for (let city in domesticStatusByCity) {
+          sortable.push([city, domesticStatusByCity[city]]);
         }
-        console.log(city);
-        console.log(numbers);
+        sortable.sort((a, b) => b[1] - a[1]);
+
+        sortable.forEach(item => {
+          citys.push(item[0]);
+          numbers.push(item[1]);
+        });
       });
 
     return {
-      labels: city,
+      labels: citys,
       datasets: [
         {
           label: '확진환자',

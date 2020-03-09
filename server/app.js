@@ -17,7 +17,7 @@ var app = express();
 
 mongoConnect();
 // domesticStatusSchedule();
-domesticStatusByCitySchedule();
+// domesticStatusByCitySchedule();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

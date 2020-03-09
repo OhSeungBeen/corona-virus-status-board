@@ -39,12 +39,11 @@ class Dashboard extends React.Component {
   // }
 
   componentDidMount() {
-    fetch('/domestic/status')
+    fetch('/domesticStatus')
       .then(res => res.json())
-      .then(domesticStatus =>
-        this.setState({ domesticStatus: domesticStatus }),
-      );
-    console.log(chartExample3.data);
+      .then(domesticStatus => {
+        this.setState({ domesticStatus: domesticStatus[0] });
+      });
   }
 
   // setBgChartData = name => {
@@ -54,7 +53,6 @@ class Dashboard extends React.Component {
   // };
 
   render() {
-    console.log('a');
     return (
       <>
         <div className="content">

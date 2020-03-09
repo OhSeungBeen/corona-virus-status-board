@@ -24,7 +24,7 @@ module.exports = () => {
     consoel.error('mongoDB connect error', error);
   });
   mongoose.connection.on('disconnected', error => {
-    console.erro('mongoDb connected. try connecting mongoDB');
+    console.error('mongoDb connected. try connecting mongoDB');
     connect();
   });
 };
