@@ -1,56 +1,28 @@
 import React from 'react';
-// nodejs library that concatenates classes
-import classNames from 'classnames';
-// react plugin used to create charts
-import { Line, Bar } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 
-// reactstrap components
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
-  Input,
-  Table,
-  Row,
-  Col,
-  UncontrolledTooltip,
-} from 'reactstrap';
+import { Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
 
-// core components
-import { chartExample3 } from 'variables/charts.jsx';
+import { domesticStatusChart } from 'variables/charts.jsx';
 
 class Dashboard extends React.Component {
-  state = { domesticStatus: {} };
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     bigChartData: "data1"
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { domesticStatus: {} };
+  }
 
   componentDidMount() {
     fetch('/domesticStatus')
       .then(res => res.json())
-      .then(domesticStatus => {
-        this.setState({ domesticStatus: domesticStatus[0] });
+      .then(result => {
+        const domesticStatus = result[0];
+        domesticStatus.confirmator = domesticStatus.confirmator.toLocaleString();
+        domesticStatus.isolate = domesticStatus.isolate.toLocaleString();
+        domesticStatus.dead = domesticStatus.dead.toLocaleString();
+        domesticStatus.inspection = domesticStatus.inspection.toLocaleString();
+        this.setState({ domesticStatus });
       });
   }
-
-  // setBgChartData = name => {
-  //   this.setState({
-  //     bigChartData: name
-  //   });
-  // };
 
   render() {
     return (
@@ -63,7 +35,7 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">확진환자</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-check-2 text-danger" />{' '}
-                    {this.state.domesticStatus.confirmator}
+                    {this.state.domesticStatus.confirmator}명
                   </CardTitle>
                 </CardHeader>
                 <CardBody></CardBody>
@@ -75,7 +47,7 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">확진환자 격리헤제</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-simple-add text-success" />{' '}
-                    {this.state.domesticStatus.isolate}
+                    {this.state.domesticStatus.isolate}명
                   </CardTitle>
                 </CardHeader>
                 <CardBody></CardBody>
@@ -87,7 +59,7 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">사망자</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-alert-circle-exc text-danger" />{' '}
-                    {this.state.domesticStatus.dead}
+                    {this.state.domesticStatus.dead}명
                   </CardTitle>
                 </CardHeader>
                 <CardBody></CardBody>
@@ -99,7 +71,7 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">검사진행</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-refresh-02 text-info" />{' '}
-                    {this.state.domesticStatus.inspection}
+                    {this.state.domesticStatus.inspection}명
                   </CardTitle>
                 </CardHeader>
                 <CardBody></CardBody>
@@ -117,9 +89,9 @@ class Dashboard extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
-                    <Bar
-                      data={chartExample3.data}
-                      options={chartExample3.options}
+                    <HorizontalBar
+                      data={domesticStatusChart.data}
+                      options={domesticStatusChart.options}
                     />
                   </div>
                 </CardBody>

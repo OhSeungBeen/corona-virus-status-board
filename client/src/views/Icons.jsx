@@ -1,24 +1,16 @@
-/*!
-
-=========================================================
-* Black Dashboard React v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React from 'react';
 
 // reactstrap components
-import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Row,
+  Col,
+  CardTitle,
+  Alert,
+  Table,
+} from 'reactstrap';
 
 class Icons extends React.Component {
   render() {
@@ -29,1115 +21,115 @@ class Icons extends React.Component {
             <Col md="12">
               <Card>
                 <CardHeader>
-                  <h5 className="title">100 Awesome Nucleo Icons</h5>
-                  <p className="category">
-                    Handcrafted by our friends from{" "}
-                    <a href="https://nucleoapp.com/?ref=1712">NucleoApp</a>
-                  </p>
+                  <CardTitle>출처: 질병관리본부</CardTitle>
                 </CardHeader>
-                <CardBody className="all-icons">
-                  <Row>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-alert-circle-exc" />
-                        <p>icon-alert-circle-exc</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-align-center" />
-                        <p>icon-align-center</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-align-left-2" />
-                        <p>icon-align-left-2</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-app" />
-                        <p>icon-app</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-atom" />
-                        <p>icon-atom</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-attach-87" />
-                        <p>icon-attach-87</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-badge" />
-                        <p>icon-badge</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-bag-16" />
-                        <p>icon-bag-16</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-bank" />
-                        <p>icon-bank</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-basket-simple" />
-                        <p>icon-basket-simple</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-bell-55" />
-                        <p>icon-bell-55</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-bold" />
-                        <p>icon-bold</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-book-bookmark" />
-                        <p>icon-book-bookmark</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-double-right" />
-                        <p>icon-double-right</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-bulb-63" />
-                        <p>icon-bulb-63</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-bullet-list-67" />
-                        <p>icon-bullet-list-67</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-bus-front-12" />
-                        <p>icon-bus-front-12</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-button-power" />
-                        <p>icon-button-power</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-camera-18" />
-                        <p>icon-camera-18</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-calendar-60" />
-                        <p>icon-calendar-60</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-caps-small" />
-                        <p>icon-caps-small</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-cart" />
-                        <p>icon-cart</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-chart-bar-32" />
-                        <p>icon-chart-bar-32</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-chart-pie-36" />
-                        <p>icon-chart-pie-36</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-chat-33" />
-                        <p>icon-chat-33</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-check-2" />
-                        <p>icon-check-2</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-cloud-download-93" />
-                        <p>icon-cloud-download-93</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-cloud-upload-94" />
-                        <p>icon-cloud-upload-94</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-coins" />
-                        <p>icon-coins</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-compass-05" />
-                        <p>icon-compass-05</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-controller" />
-                        <p>icon-controller</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-credit-card" />
-                        <p>icon-credit-card</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-delivery-fast" />
-                        <p>icon-delivery-fast</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-email-85" />
-                        <p>icon-email-85</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-gift-2" />
-                        <p>icon-gift-2</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-globe-2" />
-                        <p>icon-globe-2</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-headphones" />
-                        <p>icon-headphones</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-heart-2" />
-                        <p>icon-heart-2</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-html5" />
-                        <p>icon-html5</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-double-left" />
-                        <p>icon-double-left</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-image-02" />
-                        <p>icon-image-02</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-istanbul" />
-                        <p>icon-istanbul</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-key-25" />
-                        <p>icon-key-25</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-laptop" />
-                        <p>icon-laptop</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-light-3" />
-                        <p>icon-light-3</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-link-72" />
-                        <p>icon-link-72</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-lock-circle" />
-                        <p>icon-lock-circle</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-map-big" />
-                        <p>icon-map-big</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-minimal-down" />
-                        <p>icon-minimal-down</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-minimal-left" />
-                        <p>icon-minimal-left</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-minimal-right" />
-                        <p>icon-minimal-right</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-minimal-up" />
-                        <p>icon-minimal-up</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-mobile" />
-                        <p>icon-mobile</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-molecule-40" />
-                        <p>icon-molecule-40</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-money-coins" />
-                        <p>icon-money-coins</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-notes" />
-                        <p>icon-notes</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-palette" />
-                        <p>icon-palette</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-paper" />
-                        <p>icon-paper</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-pin" />
-                        <p>icon-pin</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-planet" />
-                        <p>icon-planet</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-puzzle-10" />
-                        <p>icon-puzzle-10</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-pencil" />
-                        <p>icon-pencil</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-satisfied" />
-                        <p>icon-satisfied</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-scissors" />
-                        <p>icon-scissors</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-send" />
-                        <p>icon-send</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-settings-gear-63" />
-                        <p>icon-settings-gear-63</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-settings" />
-                        <p>icon-settings</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-wifi" />
-                        <p>icon-wifi</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-single-02" />
-                        <p>icon-single-02</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-single-copy-04" />
-                        <p>icon-single-copy-04</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-sound-wave" />
-                        <p>icon-sound-wave</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-spaceship" />
-                        <p>icon-spaceship</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-square-pin" />
-                        <p>icon-square-pin</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-support-17" />
-                        <p>icon-support-17</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-tablet-2" />
-                        <p>icon-tablet-2</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-tag" />
-                        <p>icon-tag</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-tap-02" />
-                        <p>icon-tap-02</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-tie-bow" />
-                        <p>icon-tie-bow</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-time-alarm" />
-                        <p>icon-time-alarm</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-trash-simple" />
-                        <p>icon-trash-simple</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-trophy" />
-                        <p>icon-trophy</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-tv-2" />
-                        <p>icon-tv-2</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-upload" />
-                        <p>icon-upload</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-user-run" />
-                        <p>icon-user-run</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-vector" />
-                        <p>icon-vector</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-video-66" />
-                        <p>icon-video-66</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-wallet-43" />
-                        <p>icon-wallet-43</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-volume-98" />
-                        <p>icon-volume-98</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-watch-time" />
-                        <p>icon-watch-time</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-world" />
-                        <p>icon-world</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-zoom-split" />
-                        <p>icon-zoom-split</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-refresh-01" />
-                        <p>icon-refresh-01</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-refresh-02" />
-                        <p>icon-refresh-02</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-shape-star" />
-                        <p>icon-shape-star</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-components" />
-                        <p>icon-components</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-triangle-right-17" />
-                        <p>icon-triangle-right-17</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-button-pause" />
-                        <p>icon-button-pause</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-simple-remove" />
-                        <p>icon-simple-remove</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-simple-add" />
-                        <p>icon-simple-add</p>
-                      </div>
-                    </Col>
-                    <Col
-                      className="font-icon-list col-xs-6 col-xs-6"
-                      lg="2"
-                      md="3"
-                      sm="4"
-                    >
-                      <div className="font-icon-detail">
-                        <i className="tim-icons icon-simple-delete" />
-                        <p>icon-simple-delete</p>
-                      </div>
-                    </Col>
-                  </Row>
+                <CardBody>
+                  <Alert color="info">
+                    ㆍ개요
+                    <br />
+                    코로나 바이이러스(CoV)는 사람과 다양한 동물에 감염될 수 있는
+                    바이러스로서 유전자 크기 27~32kb의 RNA 바이러스
+                    <br /> <br />
+                    ㆍ분류
+                    <br />
+                    코로나 바이러스과에는 4개의 속(알파, 베타, 감마, 델타)이
+                    있음
+                    <br />
+                    알파․베타 : 사람과 동물에게 감염
+                    <br />
+                    감마․델타 : 동물에게 감염
+                    <br /> <br />
+                    ㆍ형태
+                    <br />
+                    형태는 코로나 바이러스의 명명과 같이 전자현미경 관찰시 구형
+                    외부 spike 단백질이 특징적인 크라운형태
+                    <br />
+                    ㆍ사람감염 코로나
+                    <br />
+                    바이러스 사람감염 코로나 바이러스는 현재까지 6종류가 알려져
+                    있음
+                    <br />
+                    감기를 일으키는 유형(229E, OC43, NL63, HKU1)
+                    <br />
+                    중증폐렴을 일으킬 수 있는 유형(SARS-CoV, MERS-CoV)
+                    <br /> <br />
+                    ㆍ코로나 바이러스 분류표
+                    <Table className="tablesorter" responsive>
+                      <thead className="text-primary">
+                        <tr>
+                          <th>속(genus)</th>
+                          <th>사람-코로나 바이러스</th>
+                          <th>사람 이외에 감염하는 코로나 바이러스</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>알파-코로나 바이러스(alphacoronavirus)</td>
+                          <td>229E, NL63</td>
+                          <td>
+                            돼지 유행성 설사 바이러스(porcine epidemic diarrhea
+                            virus : PEDV), (돼지) 전염성 위장염 바이러스
+                            (transmissible gastroenteritis virus : TGEV),
+                            개코로나 바이러스(canine coronavirus : CCoV), 고양이
+                            코로나 바이러스 (feline coronavirus : FCoV),
+                            Miniopterus bat(박쥐) coronavirus 1, Miniopterus
+                            bat(박쥐) coronavirus HKU8, Rhinolophus bat(박쥐)
+                            coronavirus HKU2, Scotophilus bat(박쥐) coronavirus
+                            512
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>베타-코로나 바이러스(betacoronavirus)</td>
+                          <td>OC43, HKU1, SARS-CoV, MERS-CoV</td>
+                          <td>
+                            돼지 혈구 응집성뇌척수염 바이러스(porcine
+                            hemagglutinating encephalomyelitis virus : PHEV),
+                            우코로나 바이러스(bovine coronavirus : BCoV),
+                            말코로나 바이러스 (equine coronavirus : EqCoV),
+                            쥐코로나 바이러스(murine coronavirus :
+                            MuCoV),Tylonycteris bat(박쥐) coronavirus HKU4,
+                            Pipistrellus bat(박쥐) coronavirus HKU5,Rousettus
+                            bat(박쥐) coronavirus HKU9
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>감마-코로나 바이러스(gammacoronavirus)</td>
+                          <td>없음</td>
+                          <td>
+                            새코로나 바이러스(Avian coronavirus),흰색
+                            돌고래(Beluga whale)-코로나 바이러스 SW1
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>델타-코로나 바이러스(deltacoronavirus)</td>
+                          <td>없음</td>
+                          <td>
+                            제주직박구리(Bulbul)-코로나 바이러스 HKU11,
+                            개똥지빠귀(Thrush)-코로나 바이러스 HKU12,
+                            킨바라(Munia)-코로나 바이러스 HKU13
+                          </td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                    <br />
+                    <br />
+                    ㆍ코로나바이러스감염증-19(COVID-19) 정보
+                    <br />
+                    (병원체) 코로나바이러스감염증-19(COVID-19)
+                    <br />
+                    (감염원) 동물로 추정하고 조사중
+                    <br />
+                    (전파경로)
+                    <br />
+                    동물 → 사람 → 사람 전파 추정
+                    <br />
+                    사람간 전파는 비말(호흡기 분비물) 전파 추정
+                    <br />
+                    가족간, 의료기관 내 2차감염 확인
+                    <br />
+                    (임상증상) 발열, 호흡기증상(기침, 호흡곤란), 폐렴
+                    <br />
+                  </Alert>
                 </CardBody>
               </Card>
             </Col>

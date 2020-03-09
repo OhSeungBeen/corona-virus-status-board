@@ -1,7 +1,3 @@
-// ##############################
-// // // Chart variables
-// #############################
-
 // chartExample1 and chartExample2 options
 // let chart1_2_options = {
 //   maintainAspectRatio: false,
@@ -336,37 +332,30 @@
 
 const citys = [];
 const numbers = [];
+fetch('/domesticStatusByCity')
+  .then(res => res.json())
+  .then(result => {
+    const domesticStatusByCity = result;
 
-let chartExample3 = {
-  data: canvas => {
-    console.log(citys);
+    const sortable = [];
+    for (let city in domesticStatusByCity) {
+      sortable.push([city, domesticStatusByCity[city]]);
+    }
+    sortable.sort((a, b) => b[1] - a[1]);
+
+    sortable.forEach(item => {
+      citys.push(item[0]);
+      numbers.push(item[1]);
+    });
+  });
+
+let domesticStatusChart = {
+  data: function(canvas) {
     let ctx = canvas.getContext('2d');
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
     gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
     gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
-    gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
-
-    fetch('/domesticStatusByCity')
-      .then(res => res.json())
-      .then(result => {
-        if (citys.length) return;
-        const domesticStatusByCity = result[0];
-        delete domesticStatusByCity._id;
-        delete domesticStatusByCity.date;
-        delete domesticStatusByCity.__v;
-
-        const sortable = [];
-        for (let city in domesticStatusByCity) {
-          sortable.push([city, domesticStatusByCity[city]]);
-        }
-        sortable.sort((a, b) => b[1] - a[1]);
-
-        sortable.forEach(item => {
-          citys.push(item[0]);
-          numbers.push(item[1]);
-        });
-      });
-
+    gradientStroke.addColorStop(0, 'rgba(119,52,169,0)');
     return {
       labels: citys,
       datasets: [
@@ -434,5 +423,5 @@ let chartExample3 = {
 };
 
 module.exports = {
-  chartExample3, // in src/views/Dashboard.jsx
+  domesticStatusChart,
 };
