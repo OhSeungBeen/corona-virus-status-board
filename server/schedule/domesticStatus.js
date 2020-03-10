@@ -4,8 +4,8 @@ const cheerio = require('cheerio');
 const DomesticStatus = require('../schemas/domesticStatus');
 
 module.exports = () => {
-  var j = schedule.scheduleJob('*/5 * * * * *', function() {
-    console.log('5초마다 실행됩니다.');
+  var j = schedule.scheduleJob('* */30 * * * *', function() {
+    console.log('domesticStatus crolling');
 
     const getHtml = async () => {
       try {

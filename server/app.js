@@ -19,12 +19,13 @@ var domesticStatusByCityRouter = require('./routes/domesticStatusByCity');
 var app = express();
 
 mongoConnect();
-// domesticStatusSchedule();
-// domesticStatusByCitySchedule();
+domesticStatusSchedule();
+domesticStatusByCitySchedule();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV == 'production') {
   app.use(morgan('combined'));
   app.use(helmet());
@@ -37,9 +38,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/domesticStatus', domesticStatusRouter);
 app.use('/domesticStatusByCity', domesticStatusByCityRouter);
+
+app.get('*', (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.redirect('/');
+});
 
 // 400 error
 app.use(function(req, res, next) {

@@ -4,7 +4,8 @@ const cheerio = require('cheerio');
 const DomesticStatusByCity = require('../schemas/domesticStatusByCity');
 
 module.exports = () => {
-  schedule.scheduleJob('*/5 * * * * *', function() {
+  schedule.scheduleJob('* */30 * * * *', function() {
+    console.log('domesticStatusByCity crolling');
     const getHtml = async () => {
       try {
         return await axios.get('http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=');
