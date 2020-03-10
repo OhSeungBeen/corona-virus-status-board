@@ -2,11 +2,11 @@ const schedule = require('node-schedule');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const DomesticStatus = require('../schemas/domesticStatus');
+const moment = require('moment');
+moment.tz.setDefault('Asia/Seoul');
 
 module.exports = () => {
-  var j = schedule.scheduleJob('* */30 * * * *', function() {
-    console.log('domesticStatus crolling');
-
+  var j = schedule.scheduleJob('*/30 * * * *', function() {
     const getHtml = async () => {
       try {
         return await axios.get('http://ncov.mohw.go.kr/bdBoardList_Real.do');
@@ -17,34 +17,33 @@ module.exports = () => {
 
     getHtml().then(html => {
       const $ = cheerio.load(html.data);
-      const tdTags = $('.w_bold');
+      const tags = $('td');
 
       const domesticStatus = new DomesticStatus({
-        confirmator: tdTags
+        confirmator: tags
           .eq(0)
           .text()
           .replace(/[^0-9]/g, ''),
-        isolate: tdTags
+        isolate: tags
           .eq(1)
           .text()
           .replace(/[^0-9]/g, ''),
-        dead: tdTags
-          .eq(2)
-          .text()
-          .replace(/[^0-9]/g, ''),
-        inspection: tdTags
+        dead: tags
           .eq(3)
           .text()
-          .replace(/[^0-9]/g, '')
+          .replace(/[^0-9]/g, ''),
+        inspection: tags
+          .eq(10)
+          .text()
+          .replace(/[^0-9]/g, ''),
+        date: moment().format('YYYY-MM-DD HH:mm:ss')
       });
 
       domesticStatus
         .save()
-        .then(result => {
-          console.log(result);
-          console.log('domesticStatus save success');
-        })
+        .then(result => {})
         .catch(error => {
+          console.log('domesticStatus DB 저장실패');
           console.error(error);
         });
     });

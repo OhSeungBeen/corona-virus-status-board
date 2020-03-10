@@ -20,7 +20,7 @@ const domesticStatusByCitySchema = new Schema({
   gyeongbuk: { type: Number, require: true },
   gyeongnam: { type: Number, require: true },
   jeju: { type: Number, require: true },
-  date: { type: Date, default: Date.now }
+  date: { type: String, required: true }
 });
 
 module.exports = mongoose.model('DomesticStatusByCity', domesticStatusByCitySchema);

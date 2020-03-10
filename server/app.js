@@ -34,17 +34,17 @@ if (process.env.NODE_ENV == 'production') {
   app.use(morgan('dev'));
 }
 
+const root = path.join(__dirname, 'public', 'build');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(root));
 app.use('/domesticStatus', domesticStatusRouter);
 app.use('/domesticStatusByCity', domesticStatusByCityRouter);
 
 app.get('*', (req, res) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.redirect('/');
+  res.sendFile(path.join(root, 'index.html'));
 });
 
 // 400 error
