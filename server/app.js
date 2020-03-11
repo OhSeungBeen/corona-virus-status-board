@@ -4,23 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 const mongoConnect = require('./schemas');
-const logger = require('./logger');
 const hpp = require('hpp');
 const helmet = require('helmet');
-
-//schedule
-const domesticStatusSchedule = require('./schedule/domesticStatus');
-const domesticStatusByCitySchedule = require('./schedule/domesticStatusByCity');
 
 //router
 var domesticStatusRouter = require('./routes/domesticStatus');
 var domesticStatusByCityRouter = require('./routes/domesticStatusByCity');
+var globalStatusRouter = require('./routes/globalStatus');
 
 var app = express();
 
 mongoConnect();
-domesticStatusSchedule();
-domesticStatusByCitySchedule();
+
+//schedule
+require('./schedule/domesticStatus')();
+require('./schedule/domesticStatusByCity')();
+require('./schedule/globalStatus')();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -42,6 +41,7 @@ app.use(cookieParser());
 app.use(express.static(root));
 app.use('/domesticStatus', domesticStatusRouter);
 app.use('/domesticStatusByCity', domesticStatusByCityRouter);
+app.use('/globalStatus', globalStatusRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(root, 'index.html'));
@@ -49,8 +49,6 @@ app.get('*', (req, res) => {
 
 // 400 error
 app.use(function(req, res, next) {
-  logger.info('hello');
-  logger.error('error');
   next(createError(404));
 });
 

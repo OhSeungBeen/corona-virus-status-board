@@ -1,11 +1,6 @@
 import React from 'react';
 // react plugin used to create google maps
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-} from 'react-google-maps';
+import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 
 // reactstrap components
 import { Card, CardHeader, CardBody, Row, Col } from 'reactstrap';
@@ -30,7 +25,7 @@ class Map extends React.Component {
           <Row>
             <Col md="12">
               <Card className="card-plain">
-                <CardHeader>Google Maps</CardHeader>
+                <CardHeader>서비스 준비 중입니다.</CardHeader>
                 <CardBody>
                   <div
                     id="map"

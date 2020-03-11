@@ -7,7 +7,10 @@ router.get('/', function(req, res, next) {
     .sort({ date: 'desc' })
     .limit(1)
     .then(result => {
-      res.json(result);
+      let domesticStatus = result[0].toObject();
+      delete domesticStatus._id;
+      delete domesticStatus.__v;
+      res.json(domesticStatus);
     });
 });
 

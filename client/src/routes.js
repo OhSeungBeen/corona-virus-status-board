@@ -1,18 +1,25 @@
-import Dashboard from 'views/Dashboard.jsx';
+import DomesticStatus from 'views/DomesticStatus.jsx';
 import Icons from 'views/Icons.jsx';
+import GlobalStatus from 'views/GlobalStatus.jsx';
 import Map from 'views/Map.jsx';
-import Notifications from 'views/Notifications.jsx';
-import Rtl from 'views/Rtl.jsx';
-import TableList from 'views/TableList.jsx';
-import Typography from 'views/Typography.jsx';
-import UserProfile from 'views/UserProfile.jsx';
+// import Rtl from 'views/Rtl.jsx';
+// import TableList from 'views/TableList.jsx';
+// import Typography from 'views/Typography.jsx';
+// import UserProfile from 'views/UserProfile.jsx';
 
 var routes = [
   {
     path: '/dashboard',
-    name: '코로나바이러스-19 상황판',
-    icon: 'tim-icons icon-chart-bar-32',
-    component: Dashboard,
+    name: '대한민국 발생 현황',
+    icon: 'tim-icons icon-molecule-40',
+    component: DomesticStatus,
+    layout: '/admin',
+  },
+  {
+    path: '/notifications',
+    name: '전 세계 발생 현황 ',
+    icon: 'tim-icons icon-world',
+    component: GlobalStatus,
     layout: '/admin',
   },
   {
@@ -22,20 +29,13 @@ var routes = [
     component: Icons,
     layout: '/admin',
   },
-  // {
-  //   path: '/map',
-  //   name: 'Map',
-  //   icon: 'tim-icons icon-pin',
-  //   component: Map,
-  //   layout: '/admin',
-  // },
-  // {
-  //   path: '/notifications',
-  //   name: 'Notifications',
-  //   icon: 'tim-icons icon-bell-55',
-  //   component: Notifications,
-  //   layout: '/admin',
-  // },
+  {
+    path: '/map',
+    name: '지도로 알아보기',
+    icon: 'tim-icons icon-map-big',
+    component: Map,
+    layout: '/admin',
+  },
   // {
   //   path: '/user-profile',
   //   name: 'User Profile',

@@ -15659,7 +15659,7 @@ hr {
 .sidebar .logo,
 .off-canvas-sidebar .logo {
   position: relative;
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 1.8rem;
   z-index: 4;
 }
 .sidebar .logo a.logo-mini,

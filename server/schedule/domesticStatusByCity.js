@@ -2,6 +2,7 @@ const schedule = require('node-schedule');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const DomesticStatusByCity = require('../schemas/domesticStatusByCity');
+const logger = require('../logger');
 const moment = require('moment');
 moment.tz.setDefault('Asia/Seoul');
 
@@ -11,7 +12,7 @@ module.exports = () => {
       try {
         return await axios.get('http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=');
       } catch (error) {
-        console.error(error);
+        logger.error(error);
       }
     };
     getHtml().then(html => {
@@ -41,10 +42,13 @@ module.exports = () => {
 
       domesticStatusByCity
         .save()
-        .then(result => {})
+        .then(result => {
+          logger.info('domesticStatusByCity DB 저장');
+          logger.info(result);
+        })
         .catch(error => {
-          console.log('domesticStatusByCity DB 저장실패');
-          console.error(error);
+          logger.log('domesticStatusByCity DB 저장실패');
+          logger.error(error);
         });
     });
   });
