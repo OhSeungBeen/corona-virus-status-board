@@ -20,6 +20,7 @@ mongoConnect();
 require('./schedule/domesticStatus')();
 require('./schedule/domesticStatusByCity')();
 require('./schedule/globalStatus')();
+// require('./schedule/globalStatusbyCountry')();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

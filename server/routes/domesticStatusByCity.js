@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
     .then(result => {
       let domesticStatusByCity = result[0].toObject();
       delete domesticStatusByCity._id;
+      delete domesticStatusByCity.date;
       delete domesticStatusByCity.__v;
       for (let result in domesticStatusByCity) {
         domesticStatusByCity[regionParse(result)] = domesticStatusByCity[result];

@@ -10,7 +10,7 @@ module.exports = () => {
   schedule.scheduleJob('*/30 * * * *', function() {
     try {
       (async () => {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch(/* { headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'] } */);
         const page = await browser.newPage();
         await page.goto('https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6');
         await page.waitForSelector('text[vector-effect="non-scaling-stroke"]');
@@ -36,11 +36,9 @@ module.exports = () => {
             logger.info(result);
           })
           .catch(error => {
-            logger.log('globalStatus DB 저장실패');
+            logger.error('globalStatus DB 저장실패');
             logger.error(error);
           });
-
-        logger.log(result);
       })();
     } catch (err) {
       logger.error(err);

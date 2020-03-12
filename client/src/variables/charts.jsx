@@ -1,3 +1,18 @@
+const confirmator = [];
+const isolate = [];
+const dead = [];
+const date = [];
+fetch('/domesticStatus/dailyData')
+  .then(res => res.json())
+  .then(results => {
+    for (let result of results) {
+      confirmator.push(result.confirmator);
+      isolate.push(result.isolate);
+      dead.push(result.dead);
+      date.push(result.date);
+    }
+  });
+
 let chart1_2_options = {
   maintainAspectRatio: false,
   legend: {
@@ -24,8 +39,8 @@ let chart1_2_options = {
           zeroLineColor: 'transparent',
         },
         ticks: {
-          suggestedMin: 60,
-          suggestedMax: 125,
+          suggestedMin: 0,
+          suggestedMax: 110,
           padding: 20,
           fontColor: '#9a9a9a',
         },
@@ -59,10 +74,10 @@ let chartExample1 = {
     gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
 
     return {
-      labels: ['준', '비', '중', '입', '니', '다'],
+      labels: date,
       datasets: [
         {
-          label: 'My First dataset',
+          label: '확진자',
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
@@ -76,7 +91,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [100, 70, 90, 70, 85, 100],
+          data: confirmator,
         },
       ],
     };
@@ -91,10 +106,10 @@ let chartExample1 = {
     gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
 
     return {
-      labels: ['준', '비', '중', '입', '니', '다'],
+      labels: date,
       datasets: [
         {
-          label: 'My First dataset',
+          label: '격리헤재',
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
@@ -108,7 +123,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [60, 75, 60, 90, 80, 110],
+          data: isolate,
         },
       ],
     };
@@ -123,10 +138,10 @@ let chartExample1 = {
     gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
 
     return {
-      labels: ['준', '비', '중', '입', '니', '다'],
+      labels: date,
       datasets: [
         {
-          label: 'My First dataset',
+          label: '사망자',
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
@@ -140,7 +155,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [90, 130, 70, 115, 60, 130],
+          data: dead,
         },
       ],
     };
