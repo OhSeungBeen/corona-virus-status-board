@@ -19,7 +19,7 @@ router.get('/dailyData', function(req, res, next) {
     $or: [{ date: /00:00:00/ }, { date: /00:00:01/ }]
   })
     .select({ _id: 0, __v: 0 })
-    .sort({ date: 'desc' })
+    .sort()
     .limit(5)
     .then(result => {
       console.log(result);

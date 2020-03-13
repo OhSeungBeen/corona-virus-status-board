@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer');
 moment.tz.setDefault('Asia/Seoul');
 
 module.exports = () => {
-  schedule.scheduleJob('*/20 * * * * *', function() {
+  schedule.scheduleJob('*/30 * * * *', function() {
     try {
       (async () => {
         const browser = await puppeteer.launch(/* { headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'] } */);
