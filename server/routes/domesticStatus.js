@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const DomesticStatus = require('../schemas/domesticStatus');
+const schedule = require('node-schedule');
+const moment = require('moment');
+moment.tz.setDefault('Asia/Seoul');
 
 router.get('/', function(req, res, next) {
   DomesticStatus.find()
@@ -14,17 +17,32 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/dailyData', function(req, res, next) {
-  DomesticStatus.find({
-    $or: [{ date: /00:00:00/ }, { date: /00:00:01/ }]
+router.get('/dailyData', async function(req, res, next) {
+  let dailyData = [];
+  for (i = 5; i >= 0; i--) {
+    let result = await getDailyData(i);
+    if (!result.length) {
+      continue;
+    }
+    dailyData.push(result[0].toObject());
+  }
+  await res.json(dailyData);
+});
+
+async function getDailyData(day) {
+  return await DomesticStatus.find({
+    date: {
+      $regex:
+        '.*' +
+        moment()
+          .subtract(day, 'days')
+          .format('YYYY-MM-DD') +
+        '.*'
+    }
   })
     .select({ _id: 0, __v: 0 })
-    .sort()
-    .limit(5)
-    .then(result => {
-      console.log(result);
-      res.json(result);
-    });
-});
+    .sort({ date: -1 })
+    .limit(1);
+}
 
 module.exports = router;

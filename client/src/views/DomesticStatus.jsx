@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { HorizontalBar, Line } from 'react-chartjs-2';
+import { HorizontalBar, Bar } from 'react-chartjs-2';
 
 import {
   Card,
@@ -13,18 +13,23 @@ import {
   Button,
 } from 'reactstrap';
 
-import { domesticStatusChart, chartExample1 } from 'variables/charts.jsx';
+import {
+  domesticStatusChart,
+  domesticStatusDailyChart,
+} from 'variables/charts.jsx';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { domesticStatus: {}, bigChartData: 'data1' };
+    this.state = {
+      domesticStatus: {},
+      dailyDate: 'data1',
+    };
   }
-  setBgChartData = name => {
-    this.setState({
-      bigChartData: name,
-    });
-  };
+
+  setDaily(data) {
+    this.setState({ dailyDate: data });
+  }
 
   componentDidMount() {
     fetch('/domesticStatus')
@@ -119,12 +124,15 @@ class Dashboard extends React.Component {
           </Row>
 
           <Row>
-            <Col xs="12">
+            <Col lg="12">
               <Card className="card-chart">
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
-                      <h5 className="card-category">확진자 추세</h5>
+                      <i className="tim-icons icon-chart-bar-32 text-primary mr10" />
+                      <h5 className="card-category display-content">
+                        일일 발생동향
+                      </h5>
                     </Col>
                     <Col sm="6">
                       <ButtonGroup
@@ -134,12 +142,12 @@ class Dashboard extends React.Component {
                         <Button
                           tag="label"
                           className={classNames('btn-simple', {
-                            active: this.state.bigChartData === 'data1',
+                            active: this.state.dailyDate === 'data1',
                           })}
                           color="info"
                           id="0"
                           size="sm"
-                          onClick={() => this.setBgChartData('data1')}
+                          onClick={() => this.setDaily('data1')}
                         >
                           <input
                             defaultChecked
@@ -160,9 +168,9 @@ class Dashboard extends React.Component {
                           size="sm"
                           tag="label"
                           className={classNames('btn-simple', {
-                            active: this.state.bigChartData === 'data2',
+                            active: this.state.dailyDate === 'data2',
                           })}
-                          onClick={() => this.setBgChartData('data2')}
+                          onClick={() => this.setDaily('data2')}
                         >
                           <input
                             className="d-none"
@@ -182,9 +190,9 @@ class Dashboard extends React.Component {
                           size="sm"
                           tag="label"
                           className={classNames('btn-simple', {
-                            active: this.state.bigChartData === 'data3',
+                            active: this.state.dailyDate === 'data3',
                           })}
-                          onClick={() => this.setBgChartData('data3')}
+                          onClick={() => this.setDaily('data3')}
                         >
                           <input
                             className="d-none"
@@ -204,9 +212,9 @@ class Dashboard extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
-                    <Line
-                      data={chartExample1[this.state.bigChartData]}
-                      options={chartExample1.options}
+                    <Bar
+                      data={domesticStatusDailyChart[this.state.dailyDate]}
+                      options={domesticStatusDailyChart.options}
                     />
                   </div>
                 </CardBody>

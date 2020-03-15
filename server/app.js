@@ -25,7 +25,7 @@ require('./schedule/globalStatus')();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV == 'production') {
   app.use(morgan('combined'));
   app.use(helmet());
