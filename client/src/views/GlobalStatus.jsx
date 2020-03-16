@@ -38,23 +38,21 @@ class GlobalStatus extends React.Component {
                 <CardHeader>
                   <h5 className="card-category">확진환자</h5>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-check-2 text-danger" />{' '}
+                    <i className="tim-icons icon-single-02 text-danger" />{' '}
                     {this.state.globalStatus.confirmator}명
                   </CardTitle>
                 </CardHeader>
-                <CardBody></CardBody>
               </Card>
             </Col>
             <Col lg="3">
               <Card className="card-chart">
                 <CardHeader>
-                  <h5 className="card-category">확진환자 격리헤제</h5>
+                  <h5 className="card-category">확진환자 격리해제</h5>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-simple-add text-success" />{' '}
+                    <i className="tim-icons icon-single-02 text-success" />{' '}
                     {this.state.globalStatus.isolate}명
                   </CardTitle>
                 </CardHeader>
-                <CardBody></CardBody>
               </Card>
             </Col>
             <Col lg="3">
@@ -66,7 +64,6 @@ class GlobalStatus extends React.Component {
                     {this.state.globalStatus.dead}명
                   </CardTitle>
                 </CardHeader>
-                <CardBody></CardBody>
               </Card>
             </Col>
             <Col lg="3">
@@ -78,7 +75,6 @@ class GlobalStatus extends React.Component {
                     {countryNumbers['numbers']}개국
                   </CardTitle>
                 </CardHeader>
-                <CardBody></CardBody>
               </Card>
             </Col>
           </Row>

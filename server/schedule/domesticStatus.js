@@ -19,7 +19,7 @@ module.exports = () => {
     getHtml().then(html => {
       const $ = cheerio.load(html.data);
       const tags = $('td');
-
+      console.log();
       const domesticStatus = new DomesticStatus({
         confirmator: tags
           .eq(0)
@@ -35,6 +35,14 @@ module.exports = () => {
           .replace(/[^0-9]/g, ''),
         inspection: tags
           .eq(10)
+          .text()
+          .replace(/[^0-9]/g, ''),
+        inspectionSum: tags
+          .eq(11)
+          .text()
+          .replace(/[^0-9]/g, ''),
+        inspectionNegative: tags
+          .eq(8)
           .text()
           .replace(/[^0-9]/g, ''),
         date: moment().format('YYYY-MM-DD HH:mm:ss')

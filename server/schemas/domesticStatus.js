@@ -19,6 +19,14 @@ const domesticStatusSchema = new Schema({
     type: Number,
     required: true
   },
+  inspectionSum: {
+    type: Number,
+    required: true
+  },
+  inspectionNegative: {
+    type: Number,
+    required: true
+  },
   date: {
     type: String,
     required: true

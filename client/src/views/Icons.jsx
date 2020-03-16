@@ -132,7 +132,7 @@ class Icons extends React.Component {
                     <br />
                   </Alert>
                 </CardBody>
-                <p class="information">출처: 질병관리본부 </p>
+                <p className="information">출처: 질병관리본부 </p>
               </Card>
             </Col>
           </Row>

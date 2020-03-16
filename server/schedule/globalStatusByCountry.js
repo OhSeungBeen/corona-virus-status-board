@@ -9,7 +9,7 @@ module.exports = () => {
   schedule.scheduleJob('*/30 * * * *', function() {
     try {
       (async () => {
-        const browser = await puppeteer.launch(/* { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] } */);
+        const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
         const page = await browser.newPage();
         await page.goto('https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6');
         await page.waitForSelector('h5');

@@ -97,6 +97,9 @@ const date = [];
 const dailyConfirmator = [];
 const dailyIsolate = [];
 const dailyDead = [];
+const dailyInspectionSum = [];
+const dailyInspection = [];
+const dailyInspectionNegative = [];
 
 fetch('/domesticStatus/dailyData')
   .then(res => res.json())
@@ -108,6 +111,20 @@ fetch('/domesticStatus/dailyData')
       );
       dailyIsolate.push(results[index].isolate - results[index - 1].isolate);
       dailyDead.push(results[index].dead - results[index - 1].dead);
+      //데이터 쌓이면 수정할것
+      // if (index == Object.keys(results).length - 1) {
+      //   dailyInspectionSum.push(
+      //     results[index].dailyInspectionSum -
+      //       results[index - 1].dailyInspectionSum,
+      //   );
+      //   dailyInspection.push(
+      //     results[index].dailyInspection - results[index - 1].dailyInspection,
+      //   );
+      //   dailyInspectionNegative.push(
+      //     results[index].dailyInspectionNegative -
+      //       results[index - 1].dailyInspectionNegative,
+      //   );
+      // }
 
       confirmator.push(results[index].confirmator);
       isolate.push(results[index].isolate);
@@ -421,4 +438,7 @@ module.exports = {
   dailyConfirmator,
   dailyIsolate,
   dailyDead,
+  dailyInspectionSum,
+  dailyInspection,
+  dailyInspectionNegative,
 };

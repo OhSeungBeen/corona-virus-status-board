@@ -19,6 +19,9 @@ import {
   dailyConfirmator,
   dailyIsolate,
   dailyDead,
+  /* dailyInspectionSum,
+  dailyInspection,
+  dailyInspectionNegative, */
 } from 'variables/charts.jsx';
 
 class Dashboard extends React.Component {
@@ -37,12 +40,17 @@ class Dashboard extends React.Component {
   componentDidMount() {
     fetch('/domesticStatus')
       .then(res => res.json())
-      .then(result => {
-        const domesticStatus = result;
+      .then(domesticStatus => {
+        domesticStatus.Mortality = (
+          (domesticStatus.dead / domesticStatus.confirmator) *
+          100
+        ).toFixed(2);
         domesticStatus.confirmator = domesticStatus.confirmator.toLocaleString();
         domesticStatus.isolate = domesticStatus.isolate.toLocaleString();
         domesticStatus.dead = domesticStatus.dead.toLocaleString();
         domesticStatus.inspection = domesticStatus.inspection.toLocaleString();
+        domesticStatus.inspectionSum = domesticStatus.inspectionSum.toLocaleString();
+        domesticStatus.inspectionNegative = domesticStatus.inspectionNegative.toLocaleString();
         this.setState({ domesticStatus });
       });
   }
@@ -54,65 +62,105 @@ class Dashboard extends React.Component {
         <div className="content">
           {/* domesticStauts */}
           <Row>
-            <Col lg="3">
+            <Col lg="3" xs="6" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <h5 className="card-category">확진환자</h5>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-check-2 text-danger" />{' '}
+                    <i className="tim-icons icon-single-02 text-danger" />{' '}
                     {this.state.domesticStatus.confirmator}명{' '}
-                    <span class="daily-span ">
+                    <span className="daily-span ">
                       (+{dailyConfirmator[dailyConfirmator.length - 1]})
                     </span>
                   </CardTitle>
                 </CardHeader>
-                <CardBody></CardBody>
               </Card>
             </Col>
-            <Col lg="3">
+            <Col lg="3" xs="6" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
-                  <h5 className="card-category">확진환자 격리헤제</h5>
+                  <h5 className="card-category">확진환자 격리해제</h5>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-simple-add text-success" />{' '}
+                    <i className="tim-icons icon-single-02 text-success" />{' '}
                     {this.state.domesticStatus.isolate}명{' '}
-                    <span class="daily-span ">
+                    <span className="daily-span ">
                       (+{dailyIsolate[dailyIsolate.length - 1]})
                     </span>
                   </CardTitle>
                 </CardHeader>
-                <CardBody></CardBody>
               </Card>
             </Col>
-            <Col lg="3">
+            <Col lg="3" xs="6" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <h5 className="card-category">사망자</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-alert-circle-exc text-danger" />{' '}
                     {this.state.domesticStatus.dead}명{' '}
-                    <span class="daily-span ">
+                    <span className="daily-span ">
                       (+{dailyDead[dailyDead.length - 1]})
                     </span>
                   </CardTitle>
                 </CardHeader>
-                <CardBody></CardBody>
               </Card>
             </Col>
-            <Col lg="3">
+            <Col lg="3" xs="6" className="pl5 pr5">
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">사망률</h5>
+                  <CardTitle tag="h3">
+                    {this.state.domesticStatus.Mortality} %{' '}
+                  </CardTitle>
+                </CardHeader>
+              </Card>
+            </Col>
+            <Col lg="4" className="pl5 pr5">
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">총 검사수</h5>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-zoom-split " />{' '}
+                    {this.state.domesticStatus.inspectionSum}명{' '}
+                    {/* <span className="daily-span ">
+                      (+{dailyInspectionSum[dailyInspectionSum.length - 1]})
+                    </span> */}
+                  </CardTitle>
+                </CardHeader>
+              </Card>
+            </Col>
+            <Col lg="4" xs="6" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <h5 className="card-category">검사진행</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-refresh-02 text-info" />{' '}
                     {this.state.domesticStatus.inspection}명{' '}
+                    {/* <span className="daily-span ">
+                      (+{dailyInspection[dailyInspection.length - 1]})
+                    </span> */}
                   </CardTitle>
                 </CardHeader>
-                <CardBody></CardBody>
+              </Card>
+            </Col>
+            <Col lg="4" xs="6" className="pl5 pr5">
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">결과 음성</h5>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-single-02 text-success" />{' '}
+                    {this.state.domesticStatus.inspectionNegative}명{' '}
+                    {/* <span className="daily-span ">
+                      (+{dailyInspectionNegative[dailyInspectionNegative.length - 1]})
+                    </span> */}
+                  </CardTitle>
+                </CardHeader>
               </Card>
             </Col>
           </Row>
-          <p class="information">* (+ ) 질병관리본부 전일 발표 대비 변화량</p>
+          <p className="information">
+            * (+ / - ) 질병관리본부 전일 발표 대비 변화량
+            <br />* 사망률 : (사망자 / 확진환자) * 100
+          </p>
           {/* domesticStatusBycity */}
           <Row>
             <Col lg="12">
@@ -226,7 +274,7 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
-          <p class="information">출처: 질병관리본부</p>
+          <p className="information">출처: 질병관리본부</p>
         </div>
       </>
     );
