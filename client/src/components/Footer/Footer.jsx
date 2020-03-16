@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import { Container, Row, Nav, NavItem, NavLink } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 class Footer extends React.Component {
   render() {
@@ -21,15 +20,8 @@ class Footer extends React.Component {
           </Nav> */}
           <div className="copyright">
             © {new Date().getFullYear()} made with{' '}
-            <i className="tim-icons icon-heart-2" /> by{' '}
-            <a
-              href="javascript:void(0)"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              오 승 빈
-            </a>{' '}
-            for a better web.
+            <i className="tim-icons icon-heart-2" /> by 오 승 빈 for a better
+            web.
           </div>
         </Container>
       </footer>

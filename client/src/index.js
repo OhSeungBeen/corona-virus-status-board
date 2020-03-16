@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import AdminLayout from 'layouts/Admin/Admin.jsx';
+import AdminLayout from 'layouts/Admin.jsx';
 
 import 'assets/css/black-dashboard-react.css';
 import 'assets/demo/demo.css';

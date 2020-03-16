@@ -158,9 +158,7 @@ class Dashboard extends React.Component {
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                             확진자
                           </span>
-                          <span className="d-block d-sm-none">
-                            <i className="tim-icons icon-single-02" />
-                          </span>
+                          <span className="d-block d-sm-none">확진자</span>
                         </Button>
                         <Button
                           color="info"
@@ -180,9 +178,7 @@ class Dashboard extends React.Component {
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                             격리해제
                           </span>
-                          <span className="d-block d-sm-none">
-                            <i className="tim-icons icon-gift-2" />
-                          </span>
+                          <span className="d-block d-sm-none">격리해제</span>
                         </Button>
                         <Button
                           color="info"
@@ -202,9 +198,7 @@ class Dashboard extends React.Component {
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                             사망자
                           </span>
-                          <span className="d-block d-sm-none">
-                            <i className="tim-icons icon-tap-02" />
-                          </span>
+                          <span className="d-block d-sm-none">사망자</span>
                         </Button>
                       </ButtonGroup>
                     </Col>
