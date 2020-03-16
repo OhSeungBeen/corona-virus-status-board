@@ -21,7 +21,7 @@ class Icons extends React.Component {
             <Col md="12">
               <Card>
                 <CardHeader>
-                  <CardTitle>출처: 질병관리본부</CardTitle>
+                  <CardTitle></CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Alert color="info">
@@ -132,6 +132,7 @@ class Icons extends React.Component {
                     <br />
                   </Alert>
                 </CardBody>
+                <p class="information">출처: 질병관리본부 </p>
               </Card>
             </Col>
           </Row>

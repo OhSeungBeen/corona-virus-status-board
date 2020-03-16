@@ -94,20 +94,20 @@ const confirmator = [];
 const isolate = [];
 const dead = [];
 const date = [];
-const confirmator2 = [];
-const isolate2 = [];
-const dead2 = [];
+const dailyConfirmator = [];
+const dailyIsolate = [];
+const dailyDead = [];
 
 fetch('/domesticStatus/dailyData')
   .then(res => res.json())
   .then(results => {
     for (let index in results) {
       if (index === '0') continue;
-      confirmator2.push(
+      dailyConfirmator.push(
         results[index].confirmator - results[index - 1].confirmator,
       );
-      isolate2.push(results[index].isolate - results[index - 1].isolate);
-      dead2.push(results[index].dead - results[index - 1].dead);
+      dailyIsolate.push(results[index].isolate - results[index - 1].isolate);
+      dailyDead.push(results[index].dead - results[index - 1].dead);
 
       confirmator.push(results[index].confirmator);
       isolate.push(results[index].isolate);
@@ -129,7 +129,7 @@ let domesticStatusDailyChart = {
         {
           label: '확진자',
           type: 'line',
-          data: confirmator2,
+          data: dailyConfirmator,
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
@@ -173,7 +173,7 @@ let domesticStatusDailyChart = {
         {
           label: '격리헤제',
           type: 'line',
-          data: isolate2,
+          data: dailyIsolate,
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
@@ -217,7 +217,7 @@ let domesticStatusDailyChart = {
         {
           label: '사망자',
           type: 'line',
-          data: dead2,
+          data: dailyDead,
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
@@ -333,7 +333,6 @@ const countryNumbers = {};
 fetch('/globalStatusByCountry')
   .then(res => res.json())
   .then(results => {
-    console.log(results);
     for (let key in results) {
       if (key === 'date' || key === 'Korea, South' || key === 'numbers')
         continue;
@@ -419,4 +418,7 @@ module.exports = {
   domesticStatusDailyChart,
   globalStatusByCountryChart,
   countryNumbers,
+  dailyConfirmator,
+  dailyIsolate,
+  dailyDead,
 };

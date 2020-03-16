@@ -16,6 +16,9 @@ import {
 import {
   domesticStatusChart,
   domesticStatusDailyChart,
+  dailyConfirmator,
+  dailyIsolate,
+  dailyDead,
 } from 'variables/charts.jsx';
 
 class Dashboard extends React.Component {
@@ -57,7 +60,10 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">확진환자</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-check-2 text-danger" />{' '}
-                    {this.state.domesticStatus.confirmator}명
+                    {this.state.domesticStatus.confirmator}명{' '}
+                    <span class="daily-span ">
+                      (+{dailyConfirmator[dailyConfirmator.length - 1]})
+                    </span>
                   </CardTitle>
                 </CardHeader>
                 <CardBody></CardBody>
@@ -69,7 +75,10 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">확진환자 격리헤제</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-simple-add text-success" />{' '}
-                    {this.state.domesticStatus.isolate}명
+                    {this.state.domesticStatus.isolate}명{' '}
+                    <span class="daily-span ">
+                      (+{dailyIsolate[dailyIsolate.length - 1]})
+                    </span>
                   </CardTitle>
                 </CardHeader>
                 <CardBody></CardBody>
@@ -81,7 +90,10 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">사망자</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-alert-circle-exc text-danger" />{' '}
-                    {this.state.domesticStatus.dead}명
+                    {this.state.domesticStatus.dead}명{' '}
+                    <span class="daily-span ">
+                      (+{dailyDead[dailyDead.length - 1]})
+                    </span>
                   </CardTitle>
                 </CardHeader>
                 <CardBody></CardBody>
@@ -93,14 +105,14 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">검사진행</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-refresh-02 text-info" />{' '}
-                    {this.state.domesticStatus.inspection}명
+                    {this.state.domesticStatus.inspection}명{' '}
                   </CardTitle>
                 </CardHeader>
                 <CardBody></CardBody>
               </Card>
             </Col>
           </Row>
-
+          <p class="information">* (+ ) 질병관리본부 전일 발표 대비 변화량</p>
           {/* domesticStatusBycity */}
           <Row>
             <Col lg="12">
@@ -122,7 +134,6 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
-
           <Row>
             <Col lg="12">
               <Card className="card-chart">
@@ -215,6 +226,7 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
+          <p class="information">출처: 질병관리본부</p>
         </div>
       </>
     );
