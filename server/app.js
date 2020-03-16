@@ -11,6 +11,7 @@ const helmet = require('helmet');
 var domesticStatusRouter = require('./routes/domesticStatus');
 var domesticStatusByCityRouter = require('./routes/domesticStatusByCity');
 var globalStatusRouter = require('./routes/globalStatus');
+var globalStatusByCountryRouter = require('./routes/globalStatusByCountry');
 
 var app = express();
 
@@ -20,7 +21,7 @@ mongoConnect();
 require('./schedule/domesticStatus')();
 require('./schedule/domesticStatusByCity')();
 require('./schedule/globalStatus')();
-// require('./schedule/globalStatusbyCountry')();
+require('./schedule/globalStatusByCountry')();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -43,6 +44,7 @@ app.use(express.static(root));
 app.use('/domesticStatus', domesticStatusRouter);
 app.use('/domesticStatusByCity', domesticStatusByCityRouter);
 app.use('/globalStatus', globalStatusRouter);
+app.use('/globalStatusByCountry', globalStatusByCountryRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(root, 'index.html'));

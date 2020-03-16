@@ -1,10 +1,9 @@
 const schedule = require('node-schedule');
-const axios = require('axios');
-const GlobalStatus = require('../schemas/globalStatus');
 const logger = require('../logger');
 const moment = require('moment');
 const puppeteer = require('puppeteer');
 moment.tz.setDefault('Asia/Seoul');
+const GlobalStatusByCountry = require('../schemas/globalStatusByCountry');
 
 module.exports = () => {
   schedule.scheduleJob('*/30 * * * *', function() {
@@ -22,29 +21,26 @@ module.exports = () => {
             let country = hTags[i].children[2].textContent;
             result[country] = number;
           }
+          result.date = moment().format('YYYY-MM-DD HH:mm:ss');
           return result;
         });
         await browser.close();
         console.log(result);
 
-        //   const globalStatus = new GlobalStatus({
-        //     confirmator: result.confirmator,
-        //     isolate: result.isolate,
-        //     dead: result.dead,
-        //     date: moment().format('YYYY-MM-DD HH:mm:ss')
-        //   });
-        //   globalStatus
-        //     .save()
-        //     .then(result => {
-        //       logger.info('globalStatus DB 저장');
-        //       logger.info(result);
-        //     })
-        //     .catch(error => {
-        //       logger.error('globalStatus DB 저장실패');
-        //       logger.error(error);
-        //     });
+        let globalStatusbyCountry = new GlobalStatusByCountry(result);
+        globalStatusbyCountry
+          .save()
+          .then(result => {
+            logger.info('globalStatusByCountry DB 저장');
+            logger.info(result);
+          })
+          .catch(error => {
+            logger.error('globalStatusByCountry DB 저장실패');
+            logger.error(error);
+          });
       })();
     } catch (err) {
+      logger.error('globalStatusByCountry crolling || DB 저장실패');
       logger.error(err);
     }
   });

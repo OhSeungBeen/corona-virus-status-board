@@ -1,5 +1,4 @@
 const schedule = require('node-schedule');
-const axios = require('axios');
 const GlobalStatus = require('../schemas/globalStatus');
 const logger = require('../logger');
 const moment = require('moment');
@@ -41,6 +40,7 @@ module.exports = () => {
           });
       })();
     } catch (err) {
+      logger.error('globalStatus crolling || DB 저장실패');
       logger.error(err);
     }
   });
