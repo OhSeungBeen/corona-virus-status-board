@@ -18,6 +18,32 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/mix', function(req, res, next) {
+  GlobalStatusByCountry.find()
+    .sort({ date: 'desc' })
+    .limit(1)
+    .select({ _id: 0, __v: 0, date: 0 })
+    .then(result => {
+      let globalStatus = result[0].toObject();
+      let parseGlobalStatus = {};
+      for (let g in globalStatus) {
+        parseGlobalStatus[`${g},${countryParse(g)}`] = globalStatus[g];
+      }
+      res.json(parseGlobalStatus);
+    });
+});
+
+router.get('/english', function(req, res, next) {
+  GlobalStatusByCountry.find()
+    .sort({ date: 'desc' })
+    .limit(1)
+    .select({ _id: 0, __v: 0, date: 0 })
+    .then(result => {
+      let globalStatus = result[0].toObject();
+      res.json(globalStatus);
+    });
+});
+
 function countryParse(data) {
   const country = [
     ['China', '중국'],

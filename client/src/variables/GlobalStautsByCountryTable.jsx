@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTable, usePagination } from 'react-table';
 
-import makeData from './makeData';
-import { nominalTypeHack } from 'prop-types';
+// import { nominalTypeHack } from 'prop-types';
 
 function Table({ columns, data }) {
   const {
@@ -30,7 +29,7 @@ function Table({ columns, data }) {
   );
   return (
     <>
-      <table class="table tablesorter" {...getTableProps()}>
+      <table className="table tablesorter" {...getTableProps()}>
         <thead className="text-primary">
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -59,16 +58,16 @@ function Table({ columns, data }) {
           })}
         </tbody>
       </table>
-      <div class="text-align-center mt10 mb10">
+      <div className="text-align-center mt10 mb10">
         <button
-          class="pagination-button btn btn-primary "
+          className="pagination-button btn btn-primary "
           onClick={() => gotoPage(0)}
           disabled={!canPreviousPage}
         >
           {'<<'}
         </button>{' '}
         <button
-          class="pagination-button btn btn-primary "
+          className="pagination-button btn btn-primary "
           onClick={() => previousPage()}
           disabled={!canPreviousPage}
         >
@@ -78,24 +77,24 @@ function Table({ columns, data }) {
           {pageIndex + 1} / {pageOptions.length}
         </strong>{' '}
         <button
-          class="pagination-button btn btn-primary "
+          className="pagination-button btn btn-primary "
           onClick={() => nextPage()}
           disabled={!canNextPage}
         >
           {'>'}
         </button>{' '}
         <button
-          class="pagination-button btn btn-primary"
+          className="pagination-button btn btn-primary"
           onClick={() => gotoPage(pageCount - 1)}
           disabled={!canNextPage}
         >
           {'>>'}
         </button>
       </div>
-      <div class="text-align-center">
+      <div className="text-align-center">
         <strong>Go to page</strong>{' '}
         <input
-          class="form-control"
+          className="form-control"
           type="number"
           defaultValue={pageIndex + 1}
           onChange={e => {
@@ -182,8 +181,6 @@ function GlobalStautsByCounrtyTable() {
     // },
   ];
 
-  console.log(makeData(20));
-  console.log(countryByCityNumbers);
   return <Table columns={columns} data={countryByCityNumbers} />;
 }
 

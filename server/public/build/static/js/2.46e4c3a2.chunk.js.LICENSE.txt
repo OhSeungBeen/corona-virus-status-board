@@ -24,13 +24,6 @@ object-assign
  */
 
 /*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <http://feross.org>
- * @license  MIT
- */
-
-/*!
  * perfect-scrollbar v1.4.0
  * (c) 2018 Hyunje Jun
  * @license MIT

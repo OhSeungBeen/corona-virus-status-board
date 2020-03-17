@@ -2,7 +2,8 @@ import React from 'react';
 import /* HorizontalBar */ 'react-chartjs-2';
 
 import { Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
-import GlobalStautsByCounrtyTable from 'variables/GlobalStautsByCounrtyTable.jsx';
+import GlobalStautsByCounrtryTable from 'variables/GlobalStautsByCountryTable.jsx';
+import GlobalStatusByCountryMap from 'variables/GlobalStatusByCountryMap.jsx';
 
 import {
   /* globalStatusByCountryChart, */
@@ -92,7 +93,8 @@ class GlobalStatus extends React.Component {
                   </h5>
                 </CardHeader>
                 <CardBody>
-                  <GlobalStautsByCounrtyTable />
+                  <GlobalStatusByCountryMap />
+                  <GlobalStautsByCounrtryTable />
                 </CardBody>
               </Card>
             </Col>

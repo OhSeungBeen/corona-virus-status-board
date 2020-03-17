@@ -18547,6 +18547,10 @@ textarea.form-control {
   padding: 0px !important;
 }
 
+.google-visualization-tooltip-item {
+  font-size: 1px !important;
+}
+
 .text-align-center {
   text-align: center;
 }
