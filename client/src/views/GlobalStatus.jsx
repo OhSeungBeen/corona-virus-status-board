@@ -1,10 +1,11 @@
 import React from 'react';
-import { HorizontalBar } from 'react-chartjs-2';
+import /* HorizontalBar */ 'react-chartjs-2';
 
 import { Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
+import GlobalStautsByCounrtyTable from 'variables/GlobalStautsByCounrtyTable.jsx';
 
 import {
-  globalStatusByCountryChart,
+  /* globalStatusByCountryChart, */
   countryNumbers,
 } from 'variables/charts.jsx';
 
@@ -28,6 +29,7 @@ class GlobalStatus extends React.Component {
 
   render() {
     console.log('render()');
+
     return (
       <>
         <div className="content">
@@ -90,6 +92,21 @@ class GlobalStatus extends React.Component {
                   </h5>
                 </CardHeader>
                 <CardBody>
+                  <GlobalStautsByCounrtyTable />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          {/* <Row>
+            <Col lg="12">
+              <Card className="card-chart">
+                <CardHeader>
+                  <i className="tim-icons icon-chart-bar-32 text-primary mr10" />
+                  <h5 className="card-category display-content">
+                    나라별 발생동향
+                  </h5>
+                </CardHeader>
+                <CardBody>
                   <HorizontalBar
                     width={100}
                     height={4000}
@@ -99,7 +116,7 @@ class GlobalStatus extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-          </Row>
+          </Row> */}
         </div>
       </>
     );

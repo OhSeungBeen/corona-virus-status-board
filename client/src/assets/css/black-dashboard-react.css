@@ -18494,6 +18494,14 @@ textarea.form-control {
   margin-right: 10px !important;
 }
 
+.mb10 {
+  margin-bottom: 10px !important;
+}
+
+.mt10 {
+  margin-top: 10px !important;
+}
+
 .mb0 {
   margin-bottom: 0px !important;
 }
@@ -18519,4 +18527,26 @@ textarea.form-control {
   line-height: 1.5;
   color: #525f7f;
   padding-right: 7px;
+}
+
+.information-alert {
+  font-size: 1rem;
+}
+
+.information-table {
+  font-size: 0.8rem;
+}
+
+.pagination {
+  padding: 0.5rem;
+}
+
+.pagination-button {
+  height: 1.6rem;
+  width: 1.6rem;
+  padding: 0px !important;
+}
+
+.text-align-center {
+  text-align: center;
 }

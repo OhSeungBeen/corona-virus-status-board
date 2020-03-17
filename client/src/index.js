@@ -15,7 +15,7 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route path="/admin" render={props => <AdminLayout {...props} />} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Redirect from="/" to="/admin/domesticStatus" />
     </Switch>
   </Router>,
   document.getElementById('root'),

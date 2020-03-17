@@ -21,12 +21,12 @@ module.exports = () => {
             let country = hTags[i].children[2].textContent;
             result[country] = number;
           }
-          result.date = moment().format('YYYY-MM-DD HH:mm:ss');
+
           return result;
         });
         await browser.close();
-        console.log(result);
 
+        result.date = moment().format('YYYY-MM-DD HH:mm:ss');
         let globalStatusbyCountry = new GlobalStatusByCountry(result);
         globalStatusbyCountry
           .save()

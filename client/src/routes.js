@@ -1,5 +1,5 @@
 import DomesticStatus from 'views/DomesticStatus.jsx';
-import Icons from 'views/Icons.jsx';
+import Information from 'views/Information.jsx';
 import GlobalStatus from 'views/GlobalStatus.jsx';
 import Map from 'views/Map.jsx';
 import News from 'views/News.jsx';
@@ -9,28 +9,28 @@ import News from 'views/News.jsx';
 
 var routes = [
   {
-    path: '/dashboard',
+    path: '/domesticStatus',
     name: '대한민국 발생 현황',
     icon: 'tim-icons icon-molecule-40',
     component: DomesticStatus,
     layout: '/admin',
   },
   {
-    path: '/notifications',
+    path: '/globalStatus',
     name: '전 세계 발생 현황 ',
     icon: 'tim-icons icon-world',
     component: GlobalStatus,
     layout: '/admin',
   },
   {
-    path: '/icons',
+    path: '/information',
     name: '코로나 바이러스?',
     icon: 'tim-icons icon-zoom-split',
-    component: Icons,
+    component: Information,
     layout: '/admin',
   },
   {
-    path: '/News',
+    path: '/news',
     name: '실시간 뉴스',
     icon: 'tim-icons icon-tv-2',
     component: News,
