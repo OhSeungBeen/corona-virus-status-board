@@ -18514,8 +18514,17 @@ textarea.form-control {
   padding-right: 5px !important;
 }
 
+.daily-span-red {
+  color: #fd5d93;
+  font-size: 0.8rem;
+}
+
 .daily-span {
-  color: red;
+  font-size: 0.8rem;
+}
+
+.daily-span-green {
+  color: #00f2c3;
   font-size: 0.8rem;
 }
 

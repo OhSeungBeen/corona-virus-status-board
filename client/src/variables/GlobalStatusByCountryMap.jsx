@@ -18,15 +18,10 @@ function GlobalStautsByCounrtyTable() {
             /* `${korean}<br/><div>확진자${Number(results[key])}명</div>`, */
           ];
         });
-        arrayResults.unshift([
-          'Country',
-          '확진자',
-          /* { role: 'tooltip', p: { html: true }  },*/
-        ]);
+        arrayResults.unshift(['Country', '확진자']);
         setCountryByCityNumbers(arrayResults);
       });
   }, []);
-  console.log(countryByCityNumbers);
   return (
     <Chart
       chartType="GeoChart"

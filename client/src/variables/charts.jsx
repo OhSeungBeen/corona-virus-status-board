@@ -10,11 +10,11 @@ fetch('/domesticStatusByCity')
     for (let city in domesticStatusByCity) {
       sortable.push([city, domesticStatusByCity[city]]);
     }
-    sortable.sort((a, b) => b[1] - a[1]);
+    sortable.sort((a, b) => b[1].confirmator - a[1].confirmator);
 
     sortable.forEach(item => {
       citys.push(item[0]);
-      numbers.push(item[1]);
+      numbers.push(item[1].confirmator);
     });
   });
 
@@ -112,19 +112,18 @@ fetch('/domesticStatus/dailyData')
       dailyIsolate.push(results[index].isolate - results[index - 1].isolate);
       dailyDead.push(results[index].dead - results[index - 1].dead);
       //데이터 쌓이면 수정할것
-      // if (index == Object.keys(results).length - 1) {
-      //   dailyInspectionSum.push(
-      //     results[index].dailyInspectionSum -
-      //       results[index - 1].dailyInspectionSum,
-      //   );
-      //   dailyInspection.push(
-      //     results[index].dailyInspection - results[index - 1].dailyInspection,
-      //   );
-      //   dailyInspectionNegative.push(
-      //     results[index].dailyInspectionNegative -
-      //       results[index - 1].dailyInspectionNegative,
-      //   );
-      // }
+      if (Number(index) === Object.keys(results).length - 1) {
+        dailyInspectionSum.push(
+          results[index].inspectionSum - results[index - 1].inspectionSum,
+        );
+        dailyInspection.push(
+          results[index].inspection - results[index - 1].inspection,
+        );
+        dailyInspectionNegative.push(
+          results[index].inspectionNegative -
+            results[index - 1].inspectionNegative,
+        );
+      }
 
       confirmator.push(results[index].confirmator);
       isolate.push(results[index].isolate);

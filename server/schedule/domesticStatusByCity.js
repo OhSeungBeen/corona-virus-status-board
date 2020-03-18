@@ -18,25 +18,181 @@ module.exports = () => {
     getHtml().then(html => {
       const $ = cheerio.load(html.data);
       const tdTags = $("td[header='status_con s_type1']");
+      const tdTags2 = $("td[header='status_con s_type4']");
+      const tdTags3 = $("td[header='status_con s_type2']");
+
+      const seoul = {
+        confirmator: tdTags.eq(1).text(),
+        isolate: tdTags2.eq(1).text(),
+        dead: tdTags3.eq(1).text(),
+        increase: tdTags
+          .eq(1)
+          .prev()
+          .text()
+      };
+      const busan = {
+        confirmator: tdTags.eq(2).text(),
+        isolate: tdTags2.eq(2).text(),
+        dead: tdTags3.eq(2).text(),
+        increase: tdTags
+          .eq(2)
+          .prev()
+          .text()
+      };
+      const deagu = {
+        confirmator: tdTags.eq(3).text(),
+        isolate: tdTags2.eq(3).text(),
+        dead: tdTags3.eq(3).text(),
+        increase: tdTags
+          .eq(3)
+          .prev()
+          .text()
+      };
+      const incheon = {
+        confirmator: tdTags.eq(4).text(),
+        isolate: tdTags2.eq(4).text(),
+        dead: tdTags3.eq(4).text(),
+        increase: tdTags
+          .eq(4)
+          .prev()
+          .text()
+      };
+      const gwangju = {
+        confirmator: tdTags.eq(5).text(),
+        isolate: tdTags2.eq(5).text(),
+        dead: tdTags3.eq(5).text(),
+        increase: tdTags
+          .eq(5)
+          .prev()
+          .text()
+      };
+      const daejeon = {
+        confirmator: tdTags.eq(6).text(),
+        isolate: tdTags2.eq(6).text(),
+        dead: tdTags3.eq(6).text(),
+        increase: tdTags
+          .eq(6)
+          .prev()
+          .text()
+      };
+      const ulsan = {
+        confirmator: tdTags.eq(7).text(),
+        isolate: tdTags2.eq(7).text(),
+        dead: tdTags3.eq(7).text(),
+        increase: tdTags
+          .eq(7)
+          .prev()
+          .text()
+      };
+      const sejong = {
+        confirmator: tdTags.eq(8).text(),
+        isolate: tdTags2.eq(8).text(),
+        dead: tdTags3.eq(8).text(),
+        increase: tdTags
+          .eq(8)
+          .prev()
+          .text()
+      };
+      const gyeonggi = {
+        confirmator: tdTags.eq(9).text(),
+        isolate: tdTags2.eq(9).text(),
+        dead: tdTags3.eq(9).text(),
+        increase: tdTags
+          .eq(9)
+          .prev()
+          .text()
+      };
+      const gangwon = {
+        confirmator: tdTags.eq(10).text(),
+        isolate: tdTags2.eq(10).text(),
+        dead: tdTags3.eq(10).text(),
+        increase: tdTags
+          .eq(10)
+          .prev()
+          .text()
+      };
+      const chungbuk = {
+        confirmator: tdTags.eq(11).text(),
+        isolate: tdTags2.eq(11).text(),
+        dead: tdTags3.eq(11).text(),
+        increase: tdTags
+          .eq(11)
+          .prev()
+          .text()
+      };
+      const chungnam = {
+        confirmator: tdTags.eq(12).text(),
+        isolate: tdTags2.eq(12).text(),
+        dead: tdTags3.eq(12).text(),
+        increase: tdTags
+          .eq(12)
+          .prev()
+          .text()
+      };
+      const jeonbuk = {
+        confirmator: tdTags.eq(13).text(),
+        isolate: tdTags2.eq(13).text(),
+        dead: tdTags3.eq(13).text(),
+        increase: tdTags
+          .eq(13)
+          .prev()
+          .text()
+      };
+      const jeonnam = {
+        confirmator: tdTags.eq(14).text(),
+        isolate: tdTags2.eq(14).text(),
+        dead: tdTags3.eq(14).text(),
+        increase: tdTags
+          .eq(14)
+          .prev()
+          .text()
+      };
+      const gyeongbuk = {
+        confirmator: tdTags.eq(15).text(),
+        isolate: tdTags2.eq(15).text(),
+        dead: tdTags3.eq(15).text(),
+        increase: tdTags
+          .eq(15)
+          .prev()
+          .text()
+      };
+      const gyeongnam = {
+        confirmator: tdTags.eq(16).text(),
+        isolate: tdTags2.eq(16).text(),
+        dead: tdTags3.eq(16).text(),
+        increase: tdTags
+          .eq(16)
+          .prev()
+          .text()
+      };
+      const jeju = {
+        confirmator: tdTags.eq(17).text(),
+        isolate: tdTags2.eq(17).text(),
+        dead: tdTags3.eq(17).text(),
+        increase: tdTags
+          .eq(17)
+          .prev()
+          .text()
+      };
 
       const domesticStatusByCity = new DomesticStatusByCity({
-        seoul: tdTags.eq(1).text(),
-        busan: tdTags.eq(2).text(),
-        deagu: tdTags.eq(3).text(),
-        incheon: tdTags.eq(4).text(),
-        gwangju: tdTags.eq(5).text(),
-        daejeon: tdTags.eq(6).text(),
-        ulsan: tdTags.eq(7).text(),
-        sejong: tdTags.eq(8).text(),
-        gyeonggi: tdTags.eq(9).text(),
-        gangwon: tdTags.eq(10).text(),
-        chungbuk: tdTags.eq(11).text(),
-        chungnam: tdTags.eq(12).text(),
-        jeonbuk: tdTags.eq(13).text(),
-        jeonnam: tdTags.eq(14).text(),
-        gyeongbuk: tdTags.eq(15).text(),
-        gyeongnam: tdTags.eq(16).text(),
-        jeju: tdTags.eq(17).text(),
+        seoul,
+        busan,
+        deagu,
+        incheon,
+        gwangju,
+        daejeon,
+        ulsan,
+        sejong,
+        gyeonggi,
+        gangwon,
+        chungbuk,
+        chungnam,
+        jeonbuk,
+        jeonnam,
+        gyeongbuk,
+        gyeongnam,
+        jeju,
         date: moment().format('YYYY-MM-DD HH:mm:ss')
       });
 

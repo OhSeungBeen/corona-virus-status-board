@@ -20,12 +20,12 @@ router.get('/dailyData', async function(req, res, next) {
   let dailyData = [];
   for (i = 5; i >= 0; i--) {
     let result = await getDailyData(i);
-    // 아직 발표 안됬을 경우 오늘날짜 출력안한다.
+    // no presentation
     if (i === 0) {
       let result2 = await getDailyData(1);
       if (result[0].toObject().confirmator === result2[0].toObject().confirmator) continue;
     }
-    // 해당날짜 데이터가 없을 경우
+
     if (!result.length) continue;
 
     dailyData.push(result[0].toObject());

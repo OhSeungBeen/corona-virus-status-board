@@ -87,7 +87,7 @@ class GlobalStatus extends React.Component {
             <Col lg="12">
               <Card className="card-chart">
                 <CardHeader>
-                  <i className="tim-icons icon-chart-bar-32 text-primary mr10" />
+                  <i className="tim-icons icon-map-big text-primary mr10" />
                   <h5 className="card-category display-content">
                     나라별 발생동향
                   </h5>

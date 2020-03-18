@@ -19,10 +19,13 @@ import {
   dailyConfirmator,
   dailyIsolate,
   dailyDead,
-  /* dailyInspectionSum,
+  dailyInspectionSum,
   dailyInspection,
-  dailyInspectionNegative, */
+  dailyInspectionNegative,
 } from 'variables/charts.jsx';
+
+import DomesticStatusByCityMap from 'variables/DomesticStatusByCityMap.jsx';
+import DomesticStatusByCityTable from 'variables/DomesticStatusByCityTable.jsx';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -57,6 +60,7 @@ class Dashboard extends React.Component {
 
   render() {
     console.log('render()');
+    console.log(dailyInspectionSum);
     return (
       <>
         <div className="content">
@@ -69,7 +73,7 @@ class Dashboard extends React.Component {
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-single-02 text-danger" />{' '}
                     {this.state.domesticStatus.confirmator}명{' '}
-                    <span className="daily-span ">
+                    <span className="daily-span-red ">
                       (+{dailyConfirmator[dailyConfirmator.length - 1]})
                     </span>
                   </CardTitle>
@@ -83,7 +87,7 @@ class Dashboard extends React.Component {
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-single-02 text-success" />{' '}
                     {this.state.domesticStatus.isolate}명{' '}
-                    <span className="daily-span ">
+                    <span className="daily-span-green">
                       (+{dailyIsolate[dailyIsolate.length - 1]})
                     </span>
                   </CardTitle>
@@ -97,7 +101,7 @@ class Dashboard extends React.Component {
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-alert-circle-exc text-danger" />{' '}
                     {this.state.domesticStatus.dead}명{' '}
-                    <span className="daily-span ">
+                    <span className="daily-span-red">
                       (+{dailyDead[dailyDead.length - 1]})
                     </span>
                   </CardTitle>
@@ -121,9 +125,9 @@ class Dashboard extends React.Component {
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-zoom-split " />{' '}
                     {this.state.domesticStatus.inspectionSum}명{' '}
-                    {/* <span className="daily-span ">
+                    <span className="daily-span ">
                       (+{dailyInspectionSum[dailyInspectionSum.length - 1]})
-                    </span> */}
+                    </span>
                   </CardTitle>
                 </CardHeader>
               </Card>
@@ -135,9 +139,9 @@ class Dashboard extends React.Component {
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-refresh-02 text-info" />{' '}
                     {this.state.domesticStatus.inspection}명{' '}
-                    {/* <span className="daily-span ">
-                      (+{dailyInspection[dailyInspection.length - 1]})
-                    </span> */}
+                    <span className="daily-span ">
+                      ({dailyInspection[dailyInspection.length - 1]})
+                    </span>
                   </CardTitle>
                 </CardHeader>
               </Card>
@@ -149,9 +153,15 @@ class Dashboard extends React.Component {
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-single-02 text-success" />{' '}
                     {this.state.domesticStatus.inspectionNegative}명{' '}
-                    {/* <span className="daily-span ">
-                      (+{dailyInspectionNegative[dailyInspectionNegative.length - 1]})
-                    </span> */}
+                    <span className="daily-span-green">
+                      (+
+                      {
+                        dailyInspectionNegative[
+                          dailyInspectionNegative.length - 1
+                        ]
+                      }
+                      )
+                    </span>
                   </CardTitle>
                 </CardHeader>
               </Card>
@@ -162,6 +172,23 @@ class Dashboard extends React.Component {
             <br />* 사망률 : (사망자 / 확진환자) * 100
           </p>
           {/* domesticStatusBycity */}
+          <Row>
+            <Col lg="12">
+              <Card className="card-chart">
+                <CardHeader>
+                  <i className="tim-icons icon-map-big text-primary mr10" />
+                  <h5 className="card-category display-content">
+                    시도별 발생동향
+                  </h5>
+                </CardHeader>
+                <CardBody>
+                  <DomesticStatusByCityMap />
+                  <DomesticStatusByCityTable />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          <Row></Row>
           <Row>
             <Col lg="12">
               <Card className="card-chart">
