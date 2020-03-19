@@ -5,11 +5,6 @@ import { Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
 import GlobalStautsByCounrtryTable from 'variables/GlobalStautsByCountryTable.jsx';
 import GlobalStatusByCountryMap from 'variables/GlobalStatusByCountryMap.jsx';
 
-import {
-  /* globalStatusByCountryChart, */
-  countryNumbers,
-} from 'variables/charts.jsx';
-
 class GlobalStatus extends React.Component {
   constructor(props) {
     super(props);
@@ -17,13 +12,17 @@ class GlobalStatus extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/globalStatus')
+    fetch('/globalStatusByCountry/total')
       .then(res => res.json())
-      .then(result => {
-        const globalStatus = result;
+      .then(globalStatus => {
+        globalStatus.mortality = (
+          (globalStatus.dead / globalStatus.confirmator) *
+          100
+        ).toFixed(2);
         globalStatus.confirmator = globalStatus.confirmator.toLocaleString();
         globalStatus.isolate = globalStatus.isolate.toLocaleString();
         globalStatus.dead = globalStatus.dead.toLocaleString();
+        globalStatus.numbers = globalStatus.numbers.toLocaleString();
         this.setState({ globalStatus });
       });
   }
@@ -36,7 +35,7 @@ class GlobalStatus extends React.Component {
         <div className="content">
           {/* domesticStauts */}
           <Row>
-            <Col lg="3">
+            <Col lg="3" xs="6" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <h5 className="card-category">확진환자</h5>
@@ -47,7 +46,7 @@ class GlobalStatus extends React.Component {
                 </CardHeader>
               </Card>
             </Col>
-            <Col lg="3">
+            <Col lg="3" xs="6" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <h5 className="card-category">확진환자 격리해제</h5>
@@ -58,7 +57,7 @@ class GlobalStatus extends React.Component {
                 </CardHeader>
               </Card>
             </Col>
-            <Col lg="3">
+            <Col lg="3" xs="6" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <h5 className="card-category">사망자</h5>
@@ -69,22 +68,33 @@ class GlobalStatus extends React.Component {
                 </CardHeader>
               </Card>
             </Col>
-            <Col lg="3">
+            <Col lg="3" xs="6" className="pl5 pr5">
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">사망률</h5>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-alert-circle-exc text-danger" />{' '}
+                    {this.state.globalStatus.mortality}%
+                  </CardTitle>
+                </CardHeader>
+              </Card>
+            </Col>
+            <Col lg="3" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <h5 className="card-category">발생국</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-world text-danger" />{' '}
-                    {countryNumbers['numbers']}개국
+                    {this.state.globalStatus.numbers}개국
                   </CardTitle>
                 </CardHeader>
               </Card>
             </Col>
           </Row>
-
+          <p className="information">* 사망률 : (사망자 / 확진환자) * 100</p>
           {/* globalStatusByCountry */}
           <Row>
-            <Col lg="12">
+            <Col lg="12" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <i className="tim-icons icon-map-big text-primary mr10" />
@@ -99,26 +109,6 @@ class GlobalStatus extends React.Component {
               </Card>
             </Col>
           </Row>
-          {/* <Row>
-            <Col lg="12">
-              <Card className="card-chart">
-                <CardHeader>
-                  <i className="tim-icons icon-chart-bar-32 text-primary mr10" />
-                  <h5 className="card-category display-content">
-                    나라별 발생동향
-                  </h5>
-                </CardHeader>
-                <CardBody>
-                  <HorizontalBar
-                    width={100}
-                    height={4000}
-                    data={globalStatusByCountryChart.data}
-                    options={globalStatusByCountryChart.options}
-                  />
-                </CardBody>
-              </Card>
-            </Col>
-          </Row> */}
         </div>
       </>
     );

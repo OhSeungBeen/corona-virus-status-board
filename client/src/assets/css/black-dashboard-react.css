@@ -1472,6 +1472,7 @@ pre code {
   width: 100%;
   margin-bottom: 1rem;
   background-color: transparent;
+  font-size: auto;
 }
 .table th,
 .table td {
@@ -4542,7 +4543,8 @@ input[type='button'].btn-block {
 
 .card-title {
   margin-bottom: 1.25rem;
-  font-size: 1.1rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
 }
 
 .card-subtitle {
@@ -18562,4 +18564,12 @@ textarea.form-control {
 
 .text-align-center {
   text-align: center;
+}
+
+.font-size-xs {
+  font-size: 0.5rem !important;
+}
+
+.font-size-s {
+  font-size: 0.6rem !important;
 }

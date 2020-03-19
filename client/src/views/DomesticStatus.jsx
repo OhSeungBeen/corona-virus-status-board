@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
     fetch('/domesticStatus')
       .then(res => res.json())
       .then(domesticStatus => {
-        domesticStatus.Mortality = (
+        domesticStatus.mortality = (
           (domesticStatus.dead / domesticStatus.confirmator) *
           100
         ).toFixed(2);
@@ -60,7 +60,6 @@ class Dashboard extends React.Component {
 
   render() {
     console.log('render()');
-    console.log(dailyInspectionSum);
     return (
       <>
         <div className="content">
@@ -113,7 +112,7 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <h5 className="card-category">사망률</h5>
                   <CardTitle tag="h3">
-                    {this.state.domesticStatus.Mortality} %{' '}
+                    {this.state.domesticStatus.mortality}%
                   </CardTitle>
                 </CardHeader>
               </Card>
@@ -173,7 +172,7 @@ class Dashboard extends React.Component {
           </p>
           {/* domesticStatusBycity */}
           <Row>
-            <Col lg="12">
+            <Col lg="12" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <i className="tim-icons icon-map-big text-primary mr10" />
@@ -190,27 +189,7 @@ class Dashboard extends React.Component {
           </Row>
           <Row></Row>
           <Row>
-            <Col lg="12">
-              <Card className="card-chart">
-                <CardHeader>
-                  <i className="tim-icons icon-chart-bar-32 text-primary mr10" />
-                  <h5 className="card-category display-content">
-                    시도별 발생동향
-                  </h5>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <HorizontalBar
-                      data={domesticStatusChart.data}
-                      options={domesticStatusChart.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg="12">
+            <Col lg="12" className="pl5 pr5">
               <Card className="card-chart">
                 <CardHeader>
                   <Row>
@@ -301,6 +280,27 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
+          <Row>
+            <Col lg="12" className="pl5 pr5">
+              <Card className="card-chart">
+                <CardHeader>
+                  <i className="tim-icons icon-chart-bar-32 text-primary mr10" />
+                  <h5 className="card-category display-content">
+                    시도별 발생동향
+                  </h5>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    <HorizontalBar
+                      data={domesticStatusChart.data}
+                      options={domesticStatusChart.options}
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
           <p className="information">출처: 질병관리본부</p>
         </div>
       </>

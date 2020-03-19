@@ -44,7 +44,7 @@ router.get('/code', function(req, res, next) {
 
 function regionParse(data, code) {
   const rigion = [
-    ['seoul', '서울', 'KR-11,부산'],
+    ['seoul', '서울', 'KR-11,서울'],
     ['busan', '부산', 'KR-26,부산'],
     ['deagu', '대구', 'KR-27,대구'],
     ['incheon', '인천', 'KR-28,인천'],

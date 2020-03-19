@@ -2,18 +2,34 @@ var express = require('express');
 var router = express.Router();
 const GlobalStatusByCountry = require('../schemas/globalStatusByCountry');
 
-router.get('/', function(req, res, next) {
+router.get('/total', function(req, res, next) {
   GlobalStatusByCountry.find()
     .sort({ date: 'desc' })
     .limit(1)
     .select({ _id: 0, __v: 0, date: 0 })
+    .then(result => {
+      globalStatus = {};
+      let temp = result[0].toObject();
+      console.log(temp);
+      globalStatus.confirmator = temp.Total.confirmator;
+      globalStatus.isolate = temp.Total.isolate;
+      globalStatus.dead = temp.Total.dead;
+      globalStatus.numbers = Object.keys(temp).length - 2;
+      res.json(globalStatus);
+    });
+});
+
+router.get('/', function(req, res, next) {
+  GlobalStatusByCountry.find()
+    .sort({ date: 'desc' })
+    .limit(1)
+    .select({ _id: 0, __v: 0, date: 0, Total: 0 })
     .then(result => {
       let globalStatus = result[0].toObject();
       let parseGlobalStatus = {};
       for (let g in globalStatus) {
         parseGlobalStatus[countryParse(g)] = globalStatus[g];
       }
-      parseGlobalStatus['numbers'] = Object.keys(parseGlobalStatus).length;
       res.json(parseGlobalStatus);
     });
 });
@@ -22,7 +38,7 @@ router.get('/mix', function(req, res, next) {
   GlobalStatusByCountry.find()
     .sort({ date: 'desc' })
     .limit(1)
-    .select({ _id: 0, __v: 0, date: 0 })
+    .select({ _id: 0, __v: 0, date: 0, Total: 0 })
     .then(result => {
       let globalStatus = result[0].toObject();
       let parseGlobalStatus = {};
@@ -49,21 +65,22 @@ function countryParse(data) {
     ['China', '중국'],
     ['Italy', '이탈리아'],
     ['Iran', '이란'],
-    ['Korea, South', '대한민국'],
+    ['S Korea', '대한민국'],
     ['Spain', '스페인'],
     ['Germany', '독일'],
     ['France', '프랑스'],
-    ['US', '미국'],
+    ['USA', '미국'],
     ['Switzerland', '스위스'],
     ['Denmark', '덴마크'],
-    ['United Kingdom', '영국'],
+    ['UK', '영국'],
     ['Norway', '노르웨이'],
     ['Netherlands', '네덜란드'],
     ['Sweden', '스웨덴'],
     ['Belgium', '벨기에'],
     ['Austria', '오스트리아'],
     ['Japan', '일본'],
-    ['Cruise Ship', '일본 크루즈'],
+    ['Diamond Princess', '일본 크루즈'],
+    ['Hong Kong', '홍콩'],
     ['Malaysia', '말레이시아'],
     ['Qatar', '카타르'],
     ['Canada', '캐나다'],
@@ -92,14 +109,14 @@ function countryParse(data) {
     ['Kuwait', '쿠웨이트'],
     ['San Marino', '산 마리노'],
     ['Lebanon', '레바논'],
-    ['United Arab Emirates', '아랍 에미리트'],
+    ['UAE', '아랍 에미리트'],
     ['Luxembourg', '룩셈부르크'],
     ['Chile', '칠레'],
     ['Peru', '페루'],
     ['Russia', '러시아'],
     ['Slovakia', '슬로바키아'],
     ['South Africa', '남아프리카'],
-    ['Taiwan*', '대만'],
+    ['Taiwan', '대만'],
     ['Vietnam', '베트남'],
     ['Pakistan', '파키스탄'],
     ['Bulgaria', '불가리아'],
@@ -132,6 +149,7 @@ function countryParse(data) {
     ['Sri Lanka', '스리랑카'],
     ['Venezuela', '베네수엘라'],
     ['Afghanistan', '아프가니스탄'],
+    ['Palestine', '팔레스타인'],
     ['North Macedonia', '북 마케토니아'],
     ['Maldives', '몰디브'],
     ['Lithuania', '리투아니아'],
@@ -144,10 +162,12 @@ function countryParse(data) {
     ['New Zealand', '뉴질랜드'],
     ['Cambodia', '캄보디아'],
     ['Burkina Faso', '브르 키나 파소'],
-    ['Reunion', '레위니옹'],
+    ['Réunion', '레위니옹'],
+    ['Macao', '마카오'],
     ['Paraguay', '파라과이'],
     ['Ghana', '가나'],
     ['Bangladesh', '방글라데시'],
+    ['French Guiana', '프랑스령 기아나'],
     ['Rwanda', '르완다'],
     ['Ethiopia', '이디오피아'],
     ['Cameroon', '카메룬'],
@@ -163,13 +183,14 @@ function countryParse(data) {
     ['Honduras', '온두라스'],
     ['Aruba', '아루바'],
     ['Monaco', '모나코'],
-    ['Jersey', '저지섬'],
+    ['Channel Islands', '저지섬'],
     ['Saint Lucia', '세인트 루시아'],
     ['Andorra', '안도라'],
     ['Nigeria', '나이지리아'],
+    ['Niger', '니제르'],
     ['Namibia', '나미비아'],
     ['Kosovo', '코소보'],
-    ['Congo (Kinshasa)', '콩고민주공화국'],
+    ['Congo', '콩고민주공화국'],
     ['Trinidad and Tobago', '트리니다드 토바고'],
     ['Guatemala', '과테말라'],
     ['Gabon', '가봉'],
@@ -177,8 +198,9 @@ function countryParse(data) {
     ['Saint Vincent and the Grenadines', '세인트빈센트 그레나딘'],
     ['Mongolia', '몽골'],
     ['Republic of the Congo', '콩고 공화국'],
+    ['DRC', '콩고 민주 공화국'],
     ['Togo', '토고'],
-    ['Central African Republic', '중앙아프리카 공화국'],
+    ['CAR', '중앙아프리카 공화국'],
     ['Cayman Islands', '케이맨 제도'],
     ['Guinea', '기니'],
     ['The Bahamas', '바하마'],
@@ -193,7 +215,40 @@ function countryParse(data) {
     ['Holy See', '바티칸 시국'],
     ["Cote d'Ivoire", '코트디부아르'],
     ['Mauritania', '모리타니'],
-    ['Equatorial Guinea', '적도 기니']
+    ['Equatorial Guinea', '적도 기니'],
+    ['Montenegro', '몬테네그로'],
+    ['Ivory Coast', '코트디부아르'],
+    ['Gibraltar', '지브롤터'],
+    ['Mauritius', '모리셔스'],
+    ['French Polynesia', '프랑스령 폴리네시아'],
+    ['Puerto Rico', '푸에르토리코'],
+    ['Tanzania', '탄자니아'],
+    ['Barbados', '바베이도스'],
+    ['Curaçao', '퀴라소'],
+    ['Bahamas', '바하마'],
+    ['Faeroe Islands', '페로 제도'],
+    ['Kyrgyzstan', '키르기스스탄'],
+    ['Mayotte', '마요트'],
+    ['St Barth', '생바르텔레미'],
+    ['Saint Martin', '세인트마틴'],
+    ['US Virgin Islands', '미국령 버진 아일랜드'],
+    ['Benin', '베냉'],
+    ['Bermuda', '버뮤다'],
+    ['Greenland', '그린란드'],
+    ['Liberia', '라이베리아'],
+    ['New Caledonia', '누벨칼레도니'],
+    ['Zambia', '잠비아'],
+    ['Chad', '차드'],
+    ['Djibouti', '지부티'],
+    ['El Salvador', '엘살바도르'],
+    ['Fiji', '피지'],
+    ['Gambia', '감비아'],
+    ['Vatican City', '바티칸 시국'],
+    ['Montserrat', '몬세라트'],
+    ['Nicaragua', '니카라과'],
+    ['St Vincent Grenadines', '세인트빈센트 그레나딘'],
+    ['Sint Maarten', '신트마르턴'],
+    ['Somalia', '소말리아']
   ];
   for (let c of country) {
     if (c[0] == data) {

@@ -7,23 +7,33 @@ const GlobalStatusByCountry = require('../schemas/globalStatusByCountry');
 
 module.exports = () => {
   schedule.scheduleJob('*/30 * * * *', function() {
+    console.log('start');
     try {
       (async () => {
         const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
         const page = await browser.newPage();
-        await page.goto('https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6');
-        await page.waitForSelector('h5');
+        await page.goto('https://www.worldometers.info/coronavirus/');
+        await page.waitForSelector('tr');
         const result = await page.evaluate(() => {
-          const hTags = document.querySelectorAll('h5');
-          result = {};
-          for (let i = 0; i < hTags.length; i++) {
-            let number = hTags[i].children[0].children[0].textContent.replace(/[^0-9]/g, '');
-            let country = hTags[i].children[2].textContent;
-            result[country] = number;
+          const result = {};
+          const trTags = document.querySelectorAll('#main_table_countries_today tr');
+          for (trTag of trTags) {
+            let country = trTag.children[0].textContent.trim().replace(/\.|\:/gi, '');
+            const confirmator = Number(trTag.children[1].textContent.trim().replace(/[^0-9]/g, ''));
+            let isolate = Number(trTag.children[5].textContent.trim().replace(/[^0-9]/g, ''));
+            if (isolate === '') isolate = '0';
+            let dead = Number(trTag.children[3].textContent.trim().replace(/[^0-9]/g, ''));
+            if (dead === '') dead = '0';
+            result[country] = {
+              confirmator,
+              isolate,
+              dead
+            };
           }
-
+          delete result['Country,Other'];
           return result;
         });
+        console.log(result);
         await browser.close();
 
         result.date = moment().format('YYYY-MM-DD HH:mm:ss');

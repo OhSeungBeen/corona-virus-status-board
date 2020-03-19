@@ -130,12 +130,17 @@ function GlobalStautsByCounrtyTable() {
         let i = 1;
         const countryByCityNumbers = [];
         for (let key in results) {
-          if (key === 'date' || key === 'Korea, South' || key === 'numbers')
-            continue;
+          if (key === 'date') continue;
           countryByCityNumbers.push({
             number: i++,
             counrty: key,
-            confirmator: `${Number(results[key]).toLocaleString()}명`,
+            confirmator: `${results[key].confirmator.toLocaleString()}`,
+            isolate: `${results[key].isolate.toLocaleString()}`,
+            dead: `${results[key].dead.toLocaleString()}`,
+            mortality: `${(
+              (results[key].dead / results[key].confirmator) *
+              100
+            ).toFixed(2)}%`,
           });
         }
         setCountryByCityNumbers(countryByCityNumbers);
@@ -144,7 +149,7 @@ function GlobalStautsByCounrtyTable() {
 
   const columns = [
     {
-      Header: '번호',
+      Header: 'No',
       accessor: 'number',
     },
     {
@@ -154,6 +159,18 @@ function GlobalStautsByCounrtyTable() {
     {
       Header: '확진환자',
       accessor: 'confirmator',
+    },
+    {
+      Header: '격리해제',
+      accessor: 'isolate',
+    },
+    {
+      Header: '사망자',
+      accessor: 'dead',
+    },
+    {
+      Header: '사망률',
+      accessor: 'mortality',
     },
     // {
     //   Header: '확진환자 격리해제',

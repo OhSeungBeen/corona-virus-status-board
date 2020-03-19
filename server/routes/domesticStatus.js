@@ -18,12 +18,16 @@ router.get('/', function(req, res, next) {
 
 router.get('/dailyData', async function(req, res, next) {
   let dailyData = [];
-  for (i = 5; i >= 0; i--) {
+  for (i = 7; i >= 0; i--) {
     let result = await getDailyData(i);
     // no presentation
     if (i === 0) {
       let result2 = await getDailyData(1);
-      if (result[0].toObject().confirmator === result2[0].toObject().confirmator) continue;
+      if (result[0].toObject().confirmator === result2[0].toObject().confirmator) {
+        let result3 = await getDailyData(8);
+        dailyData.unshift(result3[0].toObject());
+        continue;
+      }
     }
 
     if (!result.length) continue;

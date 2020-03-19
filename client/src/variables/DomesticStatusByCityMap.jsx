@@ -42,10 +42,7 @@ function DomesticStatusByCityMap() {
         backgroundColor: 'transparent',
         legend: 'none',
       }}
-      // Note: you will need to get a mapsApiKey for your project.
-      // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-      mapsApiKey="YOUR_KEY_HERE"
-      rootProps={{ 'data-testid': '2' }}
+      mapsApiKey="AIzaSyAPfPKg5VQGjvTQXY4ejFB09fNrZMB1pyg"
     />
   );
 }

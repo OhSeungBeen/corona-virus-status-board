@@ -10,7 +10,6 @@ const helmet = require('helmet');
 //router
 var domesticStatusRouter = require('./routes/domesticStatus');
 var domesticStatusByCityRouter = require('./routes/domesticStatusByCity');
-var globalStatusRouter = require('./routes/globalStatus');
 var globalStatusByCountryRouter = require('./routes/globalStatusByCountry');
 
 var app = express();
@@ -20,7 +19,6 @@ mongoConnect();
 //schedule
 require('./schedule/domesticStatus')();
 require('./schedule/domesticStatusByCity')();
-require('./schedule/globalStatus')();
 require('./schedule/globalStatusByCountry')();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -43,7 +41,6 @@ app.use(cookieParser());
 app.use(express.static(root));
 app.use('/domesticStatus', domesticStatusRouter);
 app.use('/domesticStatusByCity', domesticStatusByCityRouter);
-app.use('/globalStatus', globalStatusRouter);
 app.use('/globalStatusByCountry', globalStatusByCountryRouter);
 
 app.get('*', (req, res) => {

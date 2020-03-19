@@ -8,15 +8,11 @@ function GlobalStautsByCounrtyTable() {
     fetch('/globalStatusByCountry/mix')
       .then(res => res.json())
       .then(results => {
-        delete results.numbers;
+        console.log(results);
         let arrayResults = Object.keys(results).map(key => {
           const korean = String(key).split(',')[1];
           const english = String(key).split(',')[0];
-          return [
-            { v: english, f: korean },
-            Number(results[key]),
-            /* `${korean}<br/><div>확진자${Number(results[key])}명</div>`, */
-          ];
+          return [{ v: english, f: korean }, Number(results[key].confirmator)];
         });
         arrayResults.unshift(['Country', '확진자']);
         setCountryByCityNumbers(arrayResults);
