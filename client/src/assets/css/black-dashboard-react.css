@@ -18238,6 +18238,7 @@ textarea.form-control {
   padding-left: 5px;
   padding-right: 5px;
 }
+
 .card-chart .card-body .tab-space {
   padding: 0;
 }
@@ -18514,6 +18515,13 @@ textarea.form-control {
 
 .pr5 {
   padding-right: 5px !important;
+}
+
+.pl30 {
+  padding-left: 30px !important;
+}
+.pr30 {
+  padding-right: 30px !important;
 }
 
 .daily-span-red {

@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { HorizontalBar, Bar } from 'react-chartjs-2';
+import { HorizontalBar, Bar, Pie } from 'react-chartjs-2';
+import 'chartjs-plugin-datalabels';
 
 import {
   Card,
@@ -24,6 +25,8 @@ import {
   dailyInspectionNegative,
 } from 'variables/charts.jsx';
 
+import DomesticStatusBySexDoughnut from 'variables/DomesticStatusBySexDoughnut.jsx';
+import DomesticStatusByAgeDoughnut from 'variables/DomesticStatusByAgeDoughnut.jsx';
 import DomesticStatusByCityMap from 'variables/DomesticStatusByCityMap.jsx';
 import DomesticStatusByCityTable from 'variables/DomesticStatusByCityTable.jsx';
 
@@ -32,12 +35,21 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       domesticStatus: {},
-      dailyDate: 'data1',
+      dailyData: 'data1',
+      sexData: 'confirmator',
+      ageData: 'confirmator',
     };
   }
 
-  setDaily(data) {
-    this.setState({ dailyDate: data });
+  setDailyData(data) {
+    this.setState({ dailyData: data });
+  }
+
+  setSexData(data) {
+    this.setState({ sexData: data });
+  }
+  setAgeData(data) {
+    this.setState({ ageData: data });
   }
 
   componentDidMount() {
@@ -170,7 +182,7 @@ class Dashboard extends React.Component {
             * (+ / - ) 질병관리본부 전일 발표 대비 변화량
             <br />* 사망률 : (사망자 / 확진환자) * 100
           </p>
-          {/* domesticStatusBycity */}
+          {/* domesticStatusBycity Map,Table */}
           <Row>
             <Col lg="12" className="pl5 pr5">
               <Card className="card-chart">
@@ -188,6 +200,7 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
           <Row></Row>
+          {/* domesticStatusDaily Chart */}
           <Row>
             <Col lg="12" className="pl5 pr5">
               <Card className="card-chart">
@@ -207,12 +220,12 @@ class Dashboard extends React.Component {
                         <Button
                           tag="label"
                           className={classNames('btn-simple', {
-                            active: this.state.dailyDate === 'data1',
+                            active: this.state.dailyData === 'data1',
                           })}
                           color="info"
                           id="0"
                           size="sm"
-                          onClick={() => this.setDaily('data1')}
+                          onClick={() => this.setDailyData('data1')}
                         >
                           <input
                             defaultChecked
@@ -231,9 +244,9 @@ class Dashboard extends React.Component {
                           size="sm"
                           tag="label"
                           className={classNames('btn-simple', {
-                            active: this.state.dailyDate === 'data2',
+                            active: this.state.dailyData === 'data2',
                           })}
-                          onClick={() => this.setDaily('data2')}
+                          onClick={() => this.setDailyData('data2')}
                         >
                           <input
                             className="d-none"
@@ -251,9 +264,9 @@ class Dashboard extends React.Component {
                           size="sm"
                           tag="label"
                           className={classNames('btn-simple', {
-                            active: this.state.dailyDate === 'data3',
+                            active: this.state.dailyData === 'data3',
                           })}
-                          onClick={() => this.setDaily('data3')}
+                          onClick={() => this.setDailyData('data3')}
                         >
                           <input
                             className="d-none"
@@ -272,7 +285,7 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Bar
-                      data={domesticStatusDailyChart[this.state.dailyDate]}
+                      data={domesticStatusDailyChart[this.state.dailyData]}
                       options={domesticStatusDailyChart.options}
                     />
                   </div>
@@ -280,6 +293,155 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
+          {/* domesticStatusBySex Pie */}
+          <Row>
+            <Col lg="12" className="pl5 pr5">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
+                      <i className="tim-icons icon-chart-pie-36 text-primary mr10" />
+                      <h5 className="card-category display-content">
+                        성별 현황
+                      </h5>
+                    </Col>
+                    <Col sm="6">
+                      <ButtonGroup
+                        className="btn-group-toggle float-right"
+                        data-toggle="buttons"
+                      >
+                        <Button
+                          tag="label"
+                          className={classNames('btn-simple', {
+                            active: this.state.sexData === 'confirmator',
+                          })}
+                          color="info"
+                          id="0"
+                          size="sm"
+                          onClick={() => this.setSexData('confirmator')}
+                        >
+                          <input
+                            defaultChecked
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            확진자
+                          </span>
+                          <span className="d-block d-sm-none">확진자</span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames('btn-simple', {
+                            active: this.state.sexData === 'dead',
+                          })}
+                          onClick={() => this.setSexData('dead')}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            사망자
+                          </span>
+                          <span className="d-block d-sm-none">사망자</span>
+                        </Button>
+                      </ButtonGroup>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    <Pie
+                      redraw
+                      data={DomesticStatusBySexDoughnut[this.state.sexData]}
+                      options={DomesticStatusBySexDoughnut.options}
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          {/* domesticStatusByAge Pie */}
+          <Row>
+            <Col lg="12" className="pl5 pr5">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
+                      <i className="tim-icons icon-chart-pie-36 text-primary mr10" />
+                      <h5 className="card-category display-content">
+                        연령별 현황
+                      </h5>
+                    </Col>
+                    <Col sm="6">
+                      <ButtonGroup
+                        className="btn-group-toggle float-right"
+                        data-toggle="buttons"
+                      >
+                        <Button
+                          tag="label"
+                          className={classNames('btn-simple', {
+                            active: this.state.ageData === 'confirmator',
+                          })}
+                          color="info"
+                          id="0"
+                          size="sm"
+                          onClick={() => this.setAgeData('confirmator')}
+                        >
+                          <input
+                            defaultChecked
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            확진자
+                          </span>
+                          <span className="d-block d-sm-none">확진자</span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames('btn-simple', {
+                            active: this.state.ageData === 'dead',
+                          })}
+                          onClick={() => this.setAgeData('dead')}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            사망자
+                          </span>
+                          <span className="d-block d-sm-none">사망자</span>
+                        </Button>
+                      </ButtonGroup>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    <Pie
+                      redraw
+                      data={DomesticStatusByAgeDoughnut[this.state.ageData]}
+                      options={DomesticStatusByAgeDoughnut.options}
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
           <Row>
             <Col lg="12" className="pl5 pr5">
               <Card className="card-chart">

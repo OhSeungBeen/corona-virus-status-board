@@ -43,11 +43,41 @@ let domesticStatusChart = {
     };
   },
   options: {
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        formatter: function(value, context) {
+          let sum = 0;
+          let dataArr = context.chart.data.datasets[0].data;
+          dataArr.map(data => {
+            sum += Number(data);
+          });
+          let percentage = ((value * 100) / sum).toFixed(2) + '%';
+          return `${Number(value).toLocaleString()}명(${percentage})`;
+        },
+        font: {
+          size: '12',
+        },
+      },
+    },
     maintainAspectRatio: false,
     legend: {
       display: false,
     },
     tooltips: {
+      callbacks: {
+        title: function(tooltipItem, data) {
+          return data['labels'][tooltipItem[0]['index']];
+        },
+        label: function(tooltipItem, data) {
+          return (
+            Number(
+              data['datasets'][0]['data'][tooltipItem['index']],
+            ).toLocaleString() + '명'
+          );
+        },
+      },
       backgroundColor: '#f5f5f5',
       titleFontColor: '#333',
       bodyFontColor: '#666',
@@ -160,6 +190,17 @@ let domesticStatusDailyChart = {
           pointHoverBorderWidth: 15,
           pointRadius: 4,
           yAxisID: 'y-axis-2',
+          datalabels: {
+            offset: 7,
+            align: 'left',
+            color: '#1d8cf8',
+            formatter: function(value, context) {
+              return `${Number(value).toLocaleString()}`;
+            },
+            font: {
+              size: '12',
+            },
+          },
         },
         {
           type: 'bar',
@@ -172,6 +213,17 @@ let domesticStatusDailyChart = {
           borderWidth: 1,
           borderDash: [],
           borderDashOffset: 0.0,
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: '#e14eca',
+            formatter: function(value, context) {
+              return `${Number(value).toLocaleString()}`;
+            },
+            font: {
+              size: '12',
+            },
+          },
           yAxisID: 'y-axis-1',
         },
       ],
@@ -203,6 +255,17 @@ let domesticStatusDailyChart = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
+          datalabels: {
+            offset: 7,
+            align: 'left',
+            color: '#1d8cf8',
+            formatter: function(value, context) {
+              return `${Number(value).toLocaleString()}`;
+            },
+            font: {
+              size: '12',
+            },
+          },
           yAxisID: 'y-axis-2',
         },
         {
@@ -217,6 +280,17 @@ let domesticStatusDailyChart = {
           borderDash: [],
           borderDashOffset: 0.0,
           yAxisID: 'y-axis-1',
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: '#e14eca',
+            formatter: function(value, context) {
+              return `${Number(value).toLocaleString()}`;
+            },
+            font: {
+              size: '12',
+            },
+          },
         },
       ],
     };
@@ -248,6 +322,17 @@ let domesticStatusDailyChart = {
           pointHoverBorderWidth: 15,
           pointRadius: 4,
           yAxisID: 'y-axis-2',
+          datalabels: {
+            offset: 7,
+            align: 'left',
+            color: '#1d8cf8',
+            formatter: function(value, context) {
+              return `${Number(value).toLocaleString()}`;
+            },
+            font: {
+              size: '12',
+            },
+          },
         },
         {
           type: 'bar',
@@ -261,6 +346,17 @@ let domesticStatusDailyChart = {
           borderDash: [],
           borderDashOffset: 0.0,
           yAxisID: 'y-axis-1',
+          datalabels: {
+            color: '#e14eca',
+            anchor: 'end',
+            align: 'top',
+            formatter: function(value, context) {
+              return `${Number(value).toLocaleString()}`;
+            },
+            font: {
+              size: '12',
+            },
+          },
         },
       ],
     };
@@ -273,6 +369,15 @@ let domesticStatusDailyChart = {
       display: true,
     },
     tooltips: {
+      callbacks: {
+        label: function(tooltipItem, data) {
+          return `${
+            data.datasets[tooltipItem.datasetIndex].label
+          }: ${data.datasets[tooltipItem.datasetIndex].data[
+            tooltipItem.index
+          ].toLocaleString()}명`;
+        },
+      },
       backgroundColor: '#f5f5f5',
       titleFontColor: '#333',
       bodyFontColor: '#666',

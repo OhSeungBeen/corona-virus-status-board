@@ -91,9 +91,9 @@ function Table({ columns, data }) {
           {'>>'}
         </button>
       </div>
-      <div className="text-align-center">
+      {/* <div className="text-align-center">
         <strong>Go to page</strong>{' '}
-        {/* <input
+         <input
           className="form-control"
           type="number"
           defaultValue={pageIndex + 1}
@@ -102,8 +102,8 @@ function Table({ columns, data }) {
             gotoPage(page);
           }}
           style={{ width: '70px', display: 'inline' }}
-        />{' '} */}
-        {/* <strong>Show</strong>{' '}
+        />{' '} 
+         <strong>Show</strong>{' '}
         <select
           value={pageSize}
           onChange={e => {
@@ -115,8 +115,8 @@ function Table({ columns, data }) {
               {pageSize}
             </option>
           ))}
-        </select> */}
-      </div>
+        </select> 
+      </div> */}
     </>
   );
 }
