@@ -76,7 +76,6 @@ const DomesticStatusByAgeDoughnut = {
       bodySpacing: 4,
       xPadding: 12,
       mode: 'label',
-      intersect: 0,
       position: 'nearest',
     },
     legend: {
