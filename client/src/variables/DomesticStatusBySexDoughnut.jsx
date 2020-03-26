@@ -3,7 +3,7 @@ const DomesticStatusBySexDoughnut = {
     labels: ['남성', '여성'],
     datasets: [
       {
-        data: [3430, 5467],
+        data: [3598, 5643],
         backgroundColor: ['#e14eca', '#1d8cf8'],
         borderColor: '#27293d',
         borderWidth: 3,
@@ -14,7 +14,7 @@ const DomesticStatusBySexDoughnut = {
     labels: ['남성', '여성'],
     datasets: [
       {
-        data: [55, 49],
+        data: [68, 63],
         backgroundColor: ['#e14eca', '#1d8cf8'],
         borderColor: '#27293d',
         borderWidth: 3,
@@ -24,7 +24,7 @@ const DomesticStatusBySexDoughnut = {
   options: {
     title: {
       display: true,
-      text: '질병관리본부 2020-03-22 00시 기준',
+      text: '질병관리본부 2020-03-26 0시 기준',
     },
     layout: {
       padding: 30,

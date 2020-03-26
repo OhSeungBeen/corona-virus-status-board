@@ -13,7 +13,7 @@ const DomesticStatusByAgeDoughnut = {
     ],
     datasets: [
       {
-        data: [101, 460, 2396, 909, 1221, 1691, 1132, 595, 392],
+        data: [106, 488, 2508, 955, 1252, 1738, 1162, 616, 416],
         backgroundColor: [
           '#beaed4',
           '#dfc27d',
@@ -34,7 +34,7 @@ const DomesticStatusByAgeDoughnut = {
     labels: ['30-39세', '40-49세', '50-59세', '60-69세', '70-79세', '80세이상'],
     datasets: [
       {
-        data: [1, 1, 7, 17, 37, 41],
+        data: [1, 1, 10, 20, 41, 58],
         backgroundColor: [
           '#1b9e77',
           '#dfc27d',
@@ -51,7 +51,7 @@ const DomesticStatusByAgeDoughnut = {
   options: {
     title: {
       display: true,
-      text: '질병관리본부 2020-03-22 00시 기준',
+      text: '질병관리본부 2020-03-26 0시 기준',
     },
     layout: {
       padding: 20,
