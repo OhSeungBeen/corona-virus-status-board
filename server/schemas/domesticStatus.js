@@ -5,32 +5,36 @@ const { Schema } = mongoose;
 const domesticStatusSchema = new Schema({
   confirmator: {
     type: Number,
-    required: true
+    required: true,
+  },
+  discharge: {
+    type: Number,
+    required: true,
   },
   isolate: {
     type: Number,
-    required: true
+    required: true,
   },
   dead: {
     type: Number,
-    required: true
-  },
-  inspection: {
-    type: Number,
-    required: true
-  },
-  inspectionSum: {
-    type: Number,
-    required: true
+    required: true,
   },
   inspectionNegative: {
     type: Number,
-    required: true
+    required: true,
+  },
+  inspection: {
+    type: Number,
+    required: true,
+  },
+  inspectionSum: {
+    type: Number,
+    required: true,
   },
   date: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('DomesticStatus', domesticStatusSchema);

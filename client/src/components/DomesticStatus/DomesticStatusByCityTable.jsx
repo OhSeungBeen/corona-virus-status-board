@@ -170,30 +170,6 @@ function DomesticStatusByCityTable() {
       Header: '사망자',
       accessor: 'dead',
     },
-    // {
-    //   Header: '확진환자 격리해제',
-    //   accessor: 'age',
-    // },
-    // {
-    //   Header: '사망자',
-    //   accessor: 'visits',
-    // },
-    // {
-    //   Header: '사망률',
-    //   accessor: 'status',
-    // },
-    // {
-    //   Header: '완치율',
-    //   accessor: 'progress',
-    // },
-    // {
-    //   Header: 'Profile Progress',
-    //   accessor: 'progress',
-    // },
-    // {
-    //   Header: 'Profile Progress',
-    //   accessor: 'progress',
-    // },
   ];
 
   return <Table columns={columns} data={domesticStatusByCity} />;

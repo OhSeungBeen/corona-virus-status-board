@@ -7,7 +7,7 @@ const moment = require('moment');
 moment.tz.setDefault('Asia/Seoul');
 
 module.exports = () => {
-  var j = schedule.scheduleJob('*/30 * * * *', function() {
+  var j = schedule.scheduleJob('*/30 * * * *', function () {
     const getHtml = async () => {
       try {
         return await axios.get('http://ncov.mohw.go.kr/bdBoardList_Real.do');
@@ -15,46 +15,41 @@ module.exports = () => {
         logger.error(error);
       }
     };
-
-    getHtml().then(html => {
+    getHtml().then((html) => {
       const $ = cheerio.load(html.data);
-      const tags = $('td');
-      console.log();
+      console.log('');
       const domesticStatus = new DomesticStatus({
-        confirmator: tags
-          .eq(0)
+        confirmator: $('#content > div > div:nth-child(5) > table > tbody > tr > td:nth-child(1)')
           .text()
           .replace(/[^0-9]/g, ''),
-        isolate: tags
-          .eq(1)
+        discharge: $('#content > div > div:nth-child(5) > table > tbody > tr > td:nth-child(2)')
           .text()
           .replace(/[^0-9]/g, ''),
-        dead: tags
-          .eq(3)
+        isolate: $('#content > div > div:nth-child(5) > table > tbody > tr > td:nth-child(3)')
           .text()
           .replace(/[^0-9]/g, ''),
-        inspection: tags
-          .eq(10)
+        dead: $('#content > div > div:nth-child(5) > table > tbody > tr > td:nth-child(4)')
           .text()
           .replace(/[^0-9]/g, ''),
-        inspectionSum: tags
-          .eq(11)
+        inspectionNegative: $('#content > div > div.data_table.mgt16.mini > table > tbody > tr > td:nth-child(5)')
           .text()
           .replace(/[^0-9]/g, ''),
-        inspectionNegative: tags
-          .eq(8)
+        inspection: $('#content > div > div.data_table.mgt16.mini > table > tbody > tr > td:nth-child(7)')
           .text()
           .replace(/[^0-9]/g, ''),
-        date: moment().format('YYYY-MM-DD HH:mm:ss')
+        inspectionSum: $('#content > div > div.data_table.mgt16.mini > table > tbody > tr > td:nth-child(8)')
+          .text()
+          .replace(/[^0-9]/g, ''),
+        date: moment().format('YYYY-MM-DD HH:mm:ss'),
       });
 
       domesticStatus
         .save()
-        .then(result => {
+        .then((result) => {
           logger.info('domesticStatus DB 저장');
           logger.info(result);
         })
-        .catch(error => {
+        .catch((error) => {
           logger.log('domesticStatus DB 저장실패');
           logger.error(error);
         });

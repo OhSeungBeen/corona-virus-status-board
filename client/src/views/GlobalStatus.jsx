@@ -2,8 +2,8 @@ import React from 'react';
 import /* HorizontalBar */ 'react-chartjs-2';
 
 import { Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
-import GlobalStautsByCounrtryTable from 'variables/GlobalStautsByCountryTable.jsx';
-import GlobalStatusByCountryMap from 'variables/GlobalStatusByCountryMap.jsx';
+import GlobalStautsByCounrtryTable from 'components/GlobalStatus/GlobalStautsByCountryTable.jsx';
+import GlobalStatusByCountryMap from 'components/GlobalStatus/GlobalStatusByCountryMap.jsx';
 
 class GlobalStatus extends React.Component {
   constructor(props) {

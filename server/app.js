@@ -20,6 +20,8 @@ mongoConnect();
 require('./schedule/domesticStatus')();
 require('./schedule/domesticStatusByCity')();
 require('./schedule/globalStatusByCountry')();
+require('./schedule/domesticStatusBySex')();
+require('./schedule/domesticStatusByAge')();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -48,12 +50,12 @@ app.get('*', (req, res) => {
 });
 
 // 400 error
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // 500 error
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);

@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 const GlobalStatusByCountry = require('../schemas/globalStatusByCountry');
 
-router.get('/total', function(req, res, next) {
+router.get('/total', function (req, res, next) {
   GlobalStatusByCountry.find()
     .sort({ date: 'desc' })
     .limit(1)
     .select({ _id: 0, __v: 0, date: 0 })
-    .then(result => {
+    .then((result) => {
       globalStatus = {};
       let temp = result[0].toObject();
       console.log(temp);
@@ -19,27 +19,27 @@ router.get('/total', function(req, res, next) {
     });
 });
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   GlobalStatusByCountry.find()
     .sort({ date: 'desc' })
     .limit(1)
     .select({ _id: 0, __v: 0, date: 0, Total: 0 })
-    .then(result => {
-      let globalStatus = result[0].toObject();
+    .then((result) => {
+      //let globalStatus = result[0].toObject();
       let parseGlobalStatus = {};
-      for (let g in globalStatus) {
-        parseGlobalStatus[countryParse(g)] = globalStatus[g];
-      }
+      //for (let g in globalStatus) {
+      //  parseGlobalStatus[countryParse(g)] = globalStatus[g];
+      //}
       res.json(parseGlobalStatus);
     });
 });
 
-router.get('/mix', function(req, res, next) {
+router.get('/mix', function (req, res, next) {
   GlobalStatusByCountry.find()
     .sort({ date: 'desc' })
     .limit(1)
     .select({ _id: 0, __v: 0, date: 0, Total: 0 })
-    .then(result => {
+    .then((result) => {
       let globalStatus = result[0].toObject();
       let parseGlobalStatus = {};
       for (let g in globalStatus) {
@@ -49,12 +49,12 @@ router.get('/mix', function(req, res, next) {
     });
 });
 
-router.get('/english', function(req, res, next) {
+router.get('/english', function (req, res, next) {
   GlobalStatusByCountry.find()
     .sort({ date: 'desc' })
     .limit(1)
     .select({ _id: 0, __v: 0, date: 0 })
-    .then(result => {
+    .then((result) => {
       let globalStatus = result[0].toObject();
       res.json(globalStatus);
     });
@@ -248,7 +248,7 @@ function countryParse(data) {
     ['Nicaragua', '니카라과'],
     ['St Vincent Grenadines', '세인트빈센트 그레나딘'],
     ['Sint Maarten', '신트마르턴'],
-    ['Somalia', '소말리아']
+    ['Somalia', '소말리아'],
   ];
   for (let c of country) {
     if (c[0] == data) {
