@@ -13,7 +13,7 @@
     "history": "4.7.2",
     "match-sorter": "^4.0.2",
     "namor": "^2.0.2",
-    "node-sass": "4.9.3",
+    "node-sass": "4.13.1",
     "perfect-scrollbar": "1.4.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.6",
